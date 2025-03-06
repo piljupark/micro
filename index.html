@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="/css/swiper/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick/slick.css">
+
+  <!-- JS -->
+  <script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="/js/slick-1.8.1/slick/slick.min.js"></script>
+  <script src="/js/swiper-bundle.min.js"></script>
+  <script src="/js/gsap.min.js"></script>
+  <script src="/js/main.js"></script>
+  
+  <script src="/js/common/common_util.js"></script>
+  <script src="/js/common.js"></script>
+  
+
+  
+
+</head>
+<body>
+  <!-- gnb -->
+<div id="header-outer">
+  <header id="top">
+    <div class="header-inner common-area">
+      <h1>
+          <a class="logo-wrap" id="logo" href="/">
+            <img src="/images/header_logo.png" alt="KMA로고">
+            <span>인재개발</span>
+          </a>
+      </h1>
+      <nav class="for-pc">
+        <ul class="menu-items">
+          <li id="menu-item" class="menu-item"><a href="#program">Program</a></li>
+          <li id="menu-item" class="menu-item"><a href="#review">Review</a></li>
+          <li id="menu-item" class="menu-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="btn-nav for-mo" onclick="gnbOpen();"><span class="blind">메뉴</span></button>
+    </div>
+  </header>
+  <div class="mobile-menu for-mo">
+    <button class="btn-close for-mo" onclick="gnbClose();" ><span class="blind">닫기</span></button>
+    <ul class="menu-items">
+      <li id="menu-item" class="menu-item"><a href="#program">Program</a></li>
+      <li id="menu-item" class="menu-item"><a href="#review">Review</a></li>
+      <li id="menu-item" class="menu-item"><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+  <!-- main-section-->
+	<section id="mainSec" class="main-section">
+		<div class="visual-sec">
+			<div class="swiper main-swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="txt-box">
+							<!-- <span>111</span> -->
+							<h2 class="txt">
+								세계 3대 Tech 전시회, IFA 2024 참관과<br>
+								유럽 ESG 벤치마킹을 한번에!<br>
+								<strong>독일, 네덜란드, 벨기에<br>IFA 2024 & ESG 한국대표단</strong>
+							</h2>
+							<button onclick="goDtlPg(1);">자세히보기<i></i></button>
+						</div>
+					</div>					
+					<div class="swiper-slide">
+						<div class="txt-box">
+							<!-- <span>222</span> -->
+							<h2 class="txt">
+								AI가 필수인 시대, HR도 Tech를 활용할 때!<br>
+								지상 최대 HR Technology Expo<br>
+								<strong>미국 라스베가스<br>HR Technology Expo 2024 한국대표단</strong>
+							</h2>
+							<button onclick="goDtlPg(3);">자세히보기<i></i></button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="txt-box">
+							<!-- <span>333</span> -->
+							<h2 class="txt">
+								반도체를 넘어 AI 허브로 도약한<br>
+								'대만 빅테크' 기업의 미래 HR 전략<br>
+								<strong>대만 ATD-APC 2024 한국대표단</strong>
+							</h2>
+							<button onclick="goDtlPg(4);">자세히보기<i></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="all-box">
+					<div class="progress-box">
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- banner-section : 연간 프로그램 다운로드 -->
+	<section  id="bannerSec" class="banner-section">
+		<div class="common-cont-area">
+			<div class="swiper banner-swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">		
+						<a href="/filedown/[KMA] 2024년 해외연수 프로그램(2P)_240617.pdf" target="_blank">
+							<div class="txt-box">
+								<span>2024년 해외연수 프로그램을 한눈에</span>
+								<p><span class="text-for-mo">KMA GLOBAL</span> 연간 프로그램 다운로드</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- pagination -->
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- 글로벌 컨퍼런스 -->
+	<section id="program" class="conference-section p100">
+		<div class="common-cont-area">		
+			<div class="comm-tit-box">
+				<h3 class="comm-tit">글로벌 컨퍼런스</h3>			
+			</div>			
+			<div class="product-list">
+			    <ul id="eduOvrList">
+			    </ul>						
+			</div>	
+			<div id="moreBtnArea_eduOvrList" class="btnarea" style="display:none;">
+				<button type="button" class="btn small" id="moreBtn_eduOvrList" onclick="fnEduSbjctSrch('M', 'G');">더보기<i class="icon-more"></i></button>
+			</div>
+		</div>
+	</section>
+	
+	<!-- 주제별 해외연수 -->
+	<section class="conference-section p100">
+		<div class="common-cont-area">		
+			<div class="comm-tit-box">
+				<h3 class="comm-tit">주제별 해외연수</h3>			
+			</div>			
+			<div class="product-list">
+			    <ul id="eduNorList">
+			    </ul>						
+			</div>	
+			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
+				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+			</div>
+		</div>
+	</section>
+
+	<!-- 컨퍼런스 해외연수 -->
+	<!-- <section id="program" class="conference-section p100">
+		<div class="common-cont-area">
+			<div class="swiper conference-swiper comm-cont-swiper">
+				<div class="comm-tit-box">
+					<h3 class="comm-tit">컨퍼런스 해외연수</h3>
+					Swiper navigation buttons
+					<div class="navi-wrap">
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</div>
+				<div id="eduOvrList" class="swiper-wrapper">					          
+				</div> //swiper-wrapper
+			</div>
+		</div>
+	</section> -->
+
+	<!-- 일반 해외연수 -->
+	<!-- <section class="regular-section p100">
+		<div class="common-cont-area">
+			<h3 class="comm-tit">컨퍼런스 해외연수</h3>
+			<div class="swiper regular-swiper comm-cont-swiper">
+				<div class="comm-tit-box">
+					<h3 class="comm-tit">일반 해외연수</h3>
+					Swiper navigation buttons
+					<div class="navi-wrap">
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</div>
+				<div id="eduNorList" class="swiper-wrapper">
+				</div> //swiper-wrapper
+			</div>
+		</div>
+	</section> -->
+
+	<!-- banner-bg-section : KMA 연간프로그램 다운로드 -->
+	<section id="bannerBgSec" class="banner-bg-section">
+		<div class="banner-inner">
+			<span class="text-for-mo"><i class="icon-star"></i><span>단체 신청 시 </span>단독 일정 구성 가능합니다.</span>
+			<img class="for-pc" src="/images/icon_arrow.svg" alt="우측방향 화살표 이미지">
+			<img class="for-mo" src="/images/icon_arrow_mo.svg" alt="아래방향 화살표 이미지">
+			<span>맞춤형 사내연수 문의는 KMA 글로벌교육본부로 문의주시기 바랍니다.</span>
+		</div>
+	</section>
+
+	<!-- 글로벌 연수후기 //id="mainInfotech" -->
+	<section id="review" class="review-section animated p100">
+		<div class="area-box">
+			<div class="main-review-wrap">
+				<div class="left-box">
+					<div class="main-tit-box">
+						<h3 class="comm-tit">글로벌 연수후기</h3>
+						<p>참가자 만족도 최상</p>
+						<h4 class="tit">KMA 해외연수 <br/>생생한 현장이 궁금하다면?</h4>
+						<div class="tag-area for-pc">
+							<!-- <span>#인공지능</span>
+							<span>#디지털통화</span>
+							<span>#빅데이터</span>
+							<span>#핀테크스타트업</span>
+							<span>#금융의미래</span>
+							<span>#지속가능금융</span>
+							<span>#인공지능</span>
+							<span>#디지털통화</span>
+							<span>#빅데이터</span>
+							<span>#핀테크스타트업</span>
+							<span>#금융의미래</span>
+							<span>#지속가능금융</span> -->
+						</div>
+					</div>
+				</div>
+				<div class="right-box">
+					<div class="main-review-list" role="toolbar">
+						<div class="list-item first">
+							<a href="https://blog.naver.com/kmablog/223384045965" tabindex="0" target="_blank">
+								<div class="item-inner">
+									<div class="shorts-container">
+										<img src="/images/blog/bg_slide_img_20240415_01.png">
+									</div>
+									<span class="label">blog</span>
+									<div class="txt-box">										
+										<p class="tit">[KMA GLOBAL 연수 후기]</p>
+										<p class="txt">2023년 10월, DB인재개발원 CNA 글로벌 연수 프로그램</p>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="list-item">
+							<a href="https://blog.naver.com/kmablog/223484126942" tabindex="0" target="_blank">
+								<div class="item-inner">
+									<div class="shorts-container">
+										<img src="/images/blog/bg_slide_img_20240619_01.png">
+									</div>
+									<span class="label">blog</span>
+									<div class="txt-box">										
+										<p class="tit">[KMA GLOBAL 연수 후기]</p>
+										<p class="txt">2024년 3월, 일본 ESG 생태계 벤치마킹 연수 프로그램</p>
+									</div>
+								</div>
+							</a>
+						</div>
+						<!-- <div class="list-item">
+							<a href="https://blog.naver.com/kmablog/223359684138" tabindex="0" target="_blank">
+								<div class="item-inner">
+									<div class="shorts-container">
+										<img src="/images/blog/bg_slide_img_02.png">
+									</div>
+									<span class="label">blog</span>
+									<div class="txt-box">										
+										<p class="tit">[KMA GLOBAL 연수 후기]</p>
+										<p class="txt">한국교직원공제회 혁신기업 경영전략 트렌드 체험 연수</p>
+									</div>
+								</div>
+							</a>
+						</div> -->
+						<div class="list-item first">
+							<a href="https://blog.naver.com/kmablog/223333595168" tabindex="1" target="_blank">
+								<div class="item-inner">
+									<div class="shorts-container">
+										<img src="/images/blog/bg_slide_img.png">
+<!-- 										<iframe width="" height="" src="https://blog.naver.com/storyphoto/viewer.jsp?src=https%3A%2F%2Fblogfiles.pstatic.net%2FMjAyNDAxMjRfOCAg%2FMDAxNzA2MDc4MDg1OTE2.32qds0PmYC9nTXS4H09opZUMmQilwjs9ZB1SiwBItAAg.gbzrRYk1grKWgneKiFplZkW0buT9AMtDObZmys_YG6Ug.PNG.kmablog%2FKMA-NEWS_2024.01.24.png" title="대구경북혁신대학(DGM) 해외탐방 프로그램" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+									</div>
+									<span class="label">blog</span>
+									<div class="txt-box">										
+										<p class="tit">[KMA GLOBAL 연수 후기]</p>
+										<p class="txt">대구경북혁신대학(DGM) 해외탐방 프로그램</p>
+										<!-- <p class="classify"><span>해외연수</span><i></i><span>미주·유럽</span></p> -->
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="list-item">
+							<a href="https://youtube.com/shorts/SEI5QpUlLUI?si=CybfVla_RZZd3WzL" tabindex="2" target="_blank">
+								<div class="item-inner">
+									<div class="shorts-container">
+										<iframe width="" height="" src="https://www.youtube.com/embed/SEI5QpUlLUI" title="시애틀 시내 한복판에 펼쳐진 식물원?!🌲🍀🌱 #글로벌연수 #CES #해외연수 #아마존 #스피어 #KMA #한국능률협회" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+									</div>
+									<span class="label">blog</span>
+									<div class="txt-box">										
+										<p class="tit">시애틀 시내 한복판에 펼쳐진 식물원?!🌲🍀🌱</p>
+										<p class="txt">#미국 #시애틀 #아마존 #스피어 #기업탐방</p>
+										<!-- <p class="classify"><span>해외연수</span><i></i><span>미주·유럽</span></p> -->
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="list-item">
+							<a href="https://youtube.com/shorts/Y9hc4O126UI?si=C_ea2vnssJ2SPJDU" tabindex="3" target="_blank">
+								<div class="item-inner">
+									<div class="shorts-container">
+										<iframe width="" height="" src="https://www.youtube.com/embed/Y9hc4O126UI" title="미국 대학은 뭐가 달라유?🏫🏫🏫 #글로벌연수 #CES #해외연수 #UNLV #라스베이거스 #KMA #한국능률협회" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+									</div>
+									<span class="label">blog</span>
+									<div class="txt-box">
+										<p class="tit">미국 대학은 뭐가 달라유?🏫🏫🏫</p>
+										<p class="txt">#미국 #라스베가스 #UNLV #대학연수 </p>
+										<!-- <p class="classify"><span>해외연수</span><i></i><span>미주·유럽</span></p> -->
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="list-item">
+							<a href="https://youtube.com/shorts/2NR1u-xFpCs?si=YPfn4m8RCJXZxbzg" tabindex="4" target="_blank">
+								<div class="item-inner">
+									<div class="shorts-container">
+										<iframe width="" height="" src="https://www.youtube.com/embed/2NR1u-xFpCs" title="3조짜리 스피어 견학🙌🙌 #글로벌연수 #CES #해외연수 #스피어 #라스베이거스 #KMA #한국능률협회" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+									</div>
+									<span class="label">blog</span>
+									<div class="txt-box">
+										<p class="tit">볼거리 많은 라스베이거스 스피어🙌🙌</p>
+										<p class="txt">#미국 #라스베가스 #CES #기업해외연수</p>
+										<!-- <p class="classify"><span>해외연수</span><i></i><span>미주·유럽</span></p> -->
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- footer -->
+	<footer id="contact">
+		<div class="common-cont-area">
+			<div class="contact-box">
+				<span>Contact</span>
+				<p class="tel-wrap">
+					<a href="tel:+82232749386">02-3274-9386</a>
+					<a href="tel:+82232749388"> / 9388</a>
+					<a href="tel:+82232749340"> / 9340</a>
+					<a href="mailto:global@kma.or.kr">global@kma.or.kr</a>
+				</p>
+				<a class="inquiry" href="mailto:global@kma.or.kr">KMA 글로벌교육본부 <strong>문의하기</strong></a>
+			</div>
+			<div class="site-link-wrap">
+				<a href="https://kma.or.kr/kr/main.do" target="_blank">KMA 홈페이지</a>
+				<a href="https://kma.or.kr/main.do" target="_blank">KMA 러닝센터</a>
+				<a href="https://membership.kma.or.kr/kmaMemberMain.do" target="_blank">KMA 회원사 서비스</a>
+				<span class="copyright">2024 All Rights Reserverd ⓒ KMA global </span>
+			</div>
+		</div>  
+	</footer>
+
+	<!-- Quick Menu -->
+	<div id="quickMenu" class="quick-menu">
+		<a class="kakao" href="https://pf.kakao.com/_uTAUT" target="_blank"></a>
+		<a class="blog" href="https://blog.naver.com/NBlogTop.naver?isHttpsRedirect=true&blogId=kmablog" target="_blank"></a>
+		<a class="youtube" href="https://www.youtube.com/channel/UCCH_1SVTb4BaXMAbLf5n1kQ" target="_blank"></a>
+		<a class="mail" href="mailto:edu@kma.or.kr"></a>
+		<a class="gototop" href="#" onclick="goToGo();"></a>
+	</div>
+
+
+  
+
+</body>
+</html>
