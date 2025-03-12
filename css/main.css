@@ -29,8 +29,8 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .header-inner h1 .logo-wrap{ display: flex; height: 100%; align-items: center; }
 .header-inner h1 .logo-wrap span{ display: inline-block; margin-left: 12px; padding-left: 12px; line-height: 20px; font-family: 'SUIT'; color: #fff; font-size: 26px; font-weight: 500; letter-spacing: -0.52px; border-left: 1px solid #fff; }
 .header-inner nav ul.menu-items{ display: flex; gap: 97px; margin: 0; height: 100%; }
-.header-inner nav ul.menu-items .menu-item a{ display: flex; align-items: center; height: 100%; color: #fff; font-family: Outfit; font-size: 20px; font-weight: bold; letter-spacing: normal; text-align: center; }
-.header-inner nav ul.menu-items .menu-item.on a{ transition: all 0.25s; color: #02f359; }
+.header-inner nav ul.menu-items .menu-item a{ display: flex; align-items: center; height: 100%; color: #fff; font-family: Outfit; font-size: 20px; font-weight: bold; letter-spacing: normal; text-align: center; text-transform: uppercase; }
+.header-inner nav ul.menu-items .menu-item.on a{ transition: all 0.25s; color: #54bcb0; }
 
 /* ******************  main-section ********************** */
 .main-section{ display: block; width: 100%; height: 780px; }
@@ -46,7 +46,7 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .main-section .visual-sec .txt-box > span { color: #fff; font-size: 20px; line-height: 24px; letter-spacing: -0.4px; transform: translateY(20px); opacity: 0; word-break: keep-all; transition: 1s 0.4s; }
 .main-section .visual-sec .txt-box .txt { margin: 20px 0 52px 0; color: #fff; font-size: 48px; font-weight: normal; line-height: 57.6px; letter-spacing: -0.96px; word-break: auto-phrase; transform: translateY(20px); opacity: 0; transition: 1s 0.2s; }
 .main-section .visual-sec .txt-box .txt strong{ display: block; font-weight: 900; }
-.main-section .visual-sec .txt-box button{ padding: 0 16px; height: 50px; color: #fff; font-size: 14px; font-weight: 600; background: #4f00f6; border-radius: 6px; cursor: pointer; transform: translateY(20px); opacity: 0; transition: 1s 0.4s; }
+.main-section .visual-sec .txt-box button{ padding: 0 16px; height: 50px; color: #fff; font-size: 14px; font-weight: 600; background: #54bcb0; border-radius: 6px; cursor: pointer; transform: translateY(20px); opacity: 0; transition: 1s 0.4s; }
 .main-section .visual-sec .txt-box button i{ display: inline-block; margin-left: 47px; width: 20px; height: 20px; vertical-align: middle; background: url('/images/icon_arrow_right.png') no-repeat center center; }
 .main-section .visual-sec .txt-box button:hover{ box-shadow: 0 20px 38px rgba(0,0,0,.16); transition: all 0.25s; }
 .main-section .visual-sec .swiper-slide-active { transform: scale(1.0); }
@@ -77,15 +77,15 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .banner-section{ padding: 70px 0; background-color: #f0f3fc; }
 .banner-section .banner-swiper{ position: relative; width: 100%; height: 213px; }
 .banner-section .banner-swiper .swiper-slide{ height: 180px; border-radius: 16px; cursor: pointer; }
-.banner-section .banner-swiper .swiper-slide:nth-child(1){ background: url('/images/banner_slide_bg_01.png') no-repeat center center / cover; }
-.banner-section .banner-swiper .swiper-slide:nth-child(2){ background: url('/images/banner_slide_bg_01.png') no-repeat center center / cover; }
-.banner-section .banner-swiper .swiper-slide:nth-child(3){ background: url('/images/banner_slide_bg_01.png') no-repeat center center / cover; }
+.banner-section .banner-swiper .swiper-slide:nth-child(1){ background: url('/images/banner_slide_bg_02.webp') no-repeat center center / cover; }
+.banner-section .banner-swiper .swiper-slide:nth-child(2){ background: url('/images/banner_slide_bg_01.webp') no-repeat center center / cover; }
+.banner-section .banner-swiper .swiper-slide:nth-child(3){ background: url('/images/banner_slide_bg_01.webp') no-repeat center center / cover; }
 .banner-section .banner-swiper .txt-box{ position: absolute; top: 50%; right: 60px; transform: translateY(-50%); }
 .banner-section .banner-swiper .txt-box span{ display: inline-block; width: 100%; color: rgba(255, 255, 255, 0.7); font-size: 20px; font-weight: 600; line-height: 24px; letter-spacing: -0.4px; text-align: right; }
-.banner-section .banner-swiper .txt-box p{ margin-top: 15px; color: #fff; font-size: 28px; font-weight: 800; line-height: 28px; letter-spacing: -1.68px; text-align: right; }
+.banner-section .banner-swiper .txt-box p{ color: #fff; font-size: 28px; font-weight: 800; line-height: 28px; letter-spacing: -1.68px; text-align: right; }
 .banner-section .swiper-pagination{ bottom: 0 !important; }
 .banner-section .swiper-pagination-bullet{ background-color: #d9d9d9 !important; opacity: 1 !important; }
-.banner-section .swiper-pagination-bullet-active{ background-color: #4f00f6 !important; }
+.banner-section .swiper-pagination-bullet-active{ background-color: #54bcb0 !important; }
 
 
 /* ******************  컨퍼런스 해외연수, 글로벌 컨퍼런스 (더보기) ********************** */
@@ -94,7 +94,7 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .product-list > ul > li > div.edu-area > a { display: flex; justify-content: center; align-items: center; overflow: hidden; width: 100%; border-radius: 16px; cursor: pointer; }
 .product-list > ul > li > div.edu-area > a > .edu-img{ width: auto; max-width: 100%; }
 .product-list > ul > li > div.edu-area .base-info{ margin: 32px 0 12px; }
-.product-list > ul > li > div.edu-area .base-info .classify{ display: inline-block; margin-bottom: 15px; color: #4f00f6; font-size: 16px; font-weight: bold; line-height: 18px; letter-spacing: normal; }
+.product-list > ul > li > div.edu-area .base-info .classify{ display: inline-block; margin-bottom: 15px; color: #54bcb0; font-size: 16px; font-weight: bold; line-height: 18px; letter-spacing: normal; }
 .product-list > ul > li > div.edu-area .base-info > h3{  min-height: 59px; font-size: 22px; font-weight: bold; line-height: 29.7px; letter-spacing: -0.66px; cursor: pointer; text-overflow: ellipsis; overflow: hidden; word-break: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical }
 .product-list > ul > li > div.edu-area .price-area .badge{ display: inline-block; padding: 0 8.5px; width: auto; height: 18px; line-height: 18px; color: #f26c4f; font-size: 12px; font-weight: 500; letter-spacing: normal; text-align: center; border: 1px solid #e3e3e3; background: #f2f2f2; }
 .product-list > ul > li > div.edu-area .price-area .prd{ margin: 15px 0 20px; padding-bottom: 35px; color: #777; font-size: 16px; font-weight: normal; line-height: 16px; letter-spacing: normal; border-bottom: 1px solid #e2e2e2; }
@@ -113,7 +113,7 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .swiper-slide .edu-img{ display: inline-block; width: 100%; height: 280px; border-radius: 16px; cursor: pointer; }
 .swiper-slide .edu-img.no-img-data{ display: inline-block; width: 100%; height: 280px; border-radius: 16px; background: #efefef url('/images/img_no_data.png') no-repeat center center / cover; cursor: pointer; }
 .conference-swiper .swiper-slide .base-info{ margin: 32px 0 12px; }
-.conference-swiper .swiper-slide .base-info .classify{ display: inline-block; margin-bottom: 15px; color: #4f00f6; font-size: 16px; font-weight: bold; line-height: 18px; letter-spacing: normal; }
+.conference-swiper .swiper-slide .base-info .classify{ display: inline-block; margin-bottom: 15px; color: #54bcb0; font-size: 16px; font-weight: bold; line-height: 18px; letter-spacing: normal; }
 .conference-swiper .swiper-slide .base-info > h3{  min-height: 59px; font-size: 22px; font-weight: bold; line-height: 29.7px; letter-spacing: -0.66px; cursor: pointer; text-overflow: ellipsis; overflow: hidden; word-break: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical }
 .conference-swiper .swiper-slide .price-area .badge{ display: inline-block; padding: 0 8.5px; width: auto; height: 18px; line-height: 18px; color: #f26c4f; font-size: 12px; font-weight: 500; letter-spacing: normal; text-align: center; border: 1px solid #e3e3e3; background: #f2f2f2; }
 .conference-swiper .swiper-slide .price-area .prd{ margin: 15px 0 20px; padding-bottom: 35px; color: #777; font-size: 16px; font-weight: normal; line-height: 16px; letter-spacing: normal; border-bottom: 1px solid #e2e2e2; }
@@ -123,7 +123,7 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 /* ******************  일반 해외연수, 주제별 해외연수 ********************** */
 .regular-section{ background: #f8f8f8; }
 .regular-swiper .swiper-slide .base-info{ margin: 32px 0 12px; }
-.regular-swiper .swiper-slide .base-info .classify{ display: inline-block; margin-bottom: 15px; color: #4f00f6; font-size: 16px; font-weight: bold; line-height: 18px; letter-spacing: normal; }
+.regular-swiper .swiper-slide .base-info .classify{ display: inline-block; margin-bottom: 15px; color: #54bcb0; font-size: 16px; font-weight: bold; line-height: 18px; letter-spacing: normal; }
 .regular-swiper .swiper-slide .base-info > h3{  min-height: 59px; font-size: 22px; font-weight: bold; line-height: 29.7px; letter-spacing: -0.66px; cursor: pointer; text-overflow: ellipsis; overflow: hidden; word-break: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical }
 .regular-swiper .swiper-slide .price-area .badge{ display: inline-block; padding: 0 8.5px; width: auto; height: 18px; line-height: 18px; color: #f26c4f; font-size: 12px; font-weight: 500; letter-spacing: normal; text-align: center; border: 1px solid #e3e3e3; background: #f2f2f2; }
 .regular-swiper .swiper-slide .price-area .prd{ margin: 15px 0 20px; padding-bottom: 35px; color: #777; font-size: 16px; font-weight: normal; line-height: 16px; letter-spacing: normal; border-bottom: 1px solid #e2e2e2; }
@@ -149,10 +149,10 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .review-section .area-box{ max-width: 1488px; margin: 0px auto; }
 .review-section .area-box .main-review-wrap{ gap: 4rem; }
 .review-section .area-box .main-review-wrap .left-box{ width: 322px; /*width: 27.96%;*/ }
-.review-section .area-box .main-review-wrap .left-box .main-tit-box p{ margin: 83px 0 20px; color: #4f00f6; font-size: 16px; line-height: 18px; letter-spacing: normal; }
+.review-section .area-box .main-review-wrap .left-box .main-tit-box p{ margin: 83px 0 20px; color: #54bcb0; font-size: 16px; line-height: 18px; letter-spacing: normal; }
 .review-section .area-box .main-review-wrap .left-box .main-tit-box .tit{ font-size: 28px; font-weight: 800; line-height: 37.8px; letter-spacing: -1.12px; opacity: 0; transform: translateY(30px); }
 .review-section .area-box .main-review-wrap .left-box .tag-area{ display: flex; align-items: center; flex-wrap: wrap; gap: 8px 15px; margin-top: 43px; }
-.review-section .area-box .main-review-wrap .left-box .tag-area span{ color: #4f00f6; font-size: 1.4rem; font-weight: 300; line-height: 1.8rem; letter-spacing: normal; }
+.review-section .area-box .main-review-wrap .left-box .tag-area span{ color: #54bcb0; font-size: 1.4rem; font-weight: 300; line-height: 1.8rem; letter-spacing: normal; }
 .review-section .area-box .main-review-wrap .right-box{ width: 829.94px; /*width:72.04%;*/ margin-right:-20rem; }
 .review-section .area-box .main-review-wrap .right-box .slick-dots{ justify-content: center; }
 /* 연수후기 슬라이드 컨텐츠 */
@@ -167,7 +167,7 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .main-review-list .list-item .item-inner{ overflow: hidden; position: absolute; width:100%; padding: 3.5rem 2.8rem; box-sizing: border-box; min-height: 32rem; background:#fff; box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.1), 0 31px 31px 0 rgba(0, 0, 0, 0.09), 0 71px 42px 0 rgba(0, 0, 0, 0.05), 0 125px 50px 0 rgba(0, 0, 0, 0.01), 0 196px 55px 0 rgba(0, 0, 0, 0); transition:all 0.3s linear, min-height 0.3s linear; border-radius: 1.6rem; top:50%; transform:translateY(-50%); }
 .main-review-list .list-item .item-inner::before{ z-index: -1; content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 1.6rem; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); }
 .main-review-list.slide-on .list-item{ transition-delay:0s !important; }
-.main-review-list .list-item .item-inner .label{ color: #02f359; font-family: Poppins; font-size: 14px; font-weight: 800; line-height: 18px; letter-spacing: normal; }
+.main-review-list .list-item .item-inner .label{ color: #54bcb0; font-family: Poppins; font-size: 14px; font-weight: 800; line-height: 18px; letter-spacing: normal; }
 .main-review-list .list-item .item-inner .txt-box{ position: absolute; left: 0; bottom: 0; width: 100%; padding: 3.5rem; }
 .main-review-list .list-item .item-inner .txt-box .tit{ font-size: 1.8rem; line-height: 2.52rem; color:#fff; font-weight:700; transition:all 0.4s ease-in-out; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 .main-review-list .list-item .item-inner .txt-box .txt{ /* margin: 1.7rem 0 7.6rem; */ margin: 1.7rem 0 0; font-size: 1.4rem; line-height: 1.96rem; color:#fff; text-overflow: ellipsis; overflow: hidden; word-break: break-word; display: -webkit-box;	-webkit-line-clamp: 2; -webkit-box-orient: vertical; }
@@ -190,7 +190,7 @@ header.fixed{ background: #000; border-bottom: 1px solid #000; }
 .main-review-list .slick-dots li{ width: 8px; height: 8px; margin: 0 8px 0 0; }
 .main-review-list .slick-dots li:last-child{ margin-right: 0; }
 .main-review-list .slick-dots li button{ cursor:pointer; margin:0px; padding:0px; vertical-align:top; width: 0.8rem; height: 0.8rem; background-color:#d9d9d9; -webkit-border-radius:50%; -moz-border-radius:50%; -o-border-radius:50%; border-radius:50%; }
-.main-review-list .slick-dots li.slick-active button{ background: #4f00f6; opacity:1.0; }
+.main-review-list .slick-dots li.slick-active button{ background: #54bcb0; opacity:1.0; }
 .main-review-list .slick-dots li button:before{ display: none; }
 
 /* 글로벌 연수후기 :: Animation */
@@ -268,7 +268,7 @@ footer .copyright{ display: block; margin-top: 32px; color: rgba(255, 255, 255, 
 .quick-menu .blog{ background: #000 url('/images/icon_quick_blog.svg') no-repeat center center / 60%; }
 .quick-menu .youtube{ background: #000 url('/images/icon_quick_youtube.svg') no-repeat center center / 60%; }
 .quick-menu .mail{ background: #000 url('/images/icon_quick_mail.svg') no-repeat center center / 60%; }
-.quick-menu .gototop{ background: #4f00f6 url('/images/icon_quick_gototop.svg') no-repeat center center / 60%; }
+.quick-menu .gototop{ background: #54bcb0 url('/images/icon_quick_gototop.svg') no-repeat center center / 60%; }
 
 @media screen and (max-width: 1280px) {
 	/* ******************  Common CSS ********************** */
@@ -301,7 +301,7 @@ footer .copyright{ display: block; margin-top: 32px; color: rgba(255, 255, 255, 
 	.main-section .visual-sec .all-box{ width: auto; height: auto; top: unset; bottom: 20px; left: 20px; transform: unset; }
 	.main-section .visual-sec .swiper-pagination{ flex-direction: row; gap: 8px; }
 	.main-section .swiper-pagination-bullet{ width: 8px !important; height: 8px !important; background-color: #d9d9d9 !important; border-radius: 100% !important; }
-	.main-section .swiper-pagination-bullet-active{ background-color: #02f359 !important; }
+	.main-section .swiper-pagination-bullet-active{ background-color: #54bcb0 !important; }
 
 	/* ******************  banner-section ********************** */
 	.banner-section{ padding: 33.5px 0; }

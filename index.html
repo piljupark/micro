@@ -32,14 +32,15 @@
       <h1>
           <a class="logo-wrap" id="logo" href="/">
             <img src="/images/header_logo.png" alt="KMA로고">
-            <span>인재개발</span>
+            <span>HRD</span>
           </a>
       </h1>
       <nav class="for-pc">
         <ul class="menu-items">
+          <li id="menu-item" class="menu-item"><a href="#model">Model</a></li>
           <li id="menu-item" class="menu-item"><a href="#program">Program</a></li>
-          <li id="menu-item" class="menu-item"><a href="#review">Review</a></li>
-          <li id="menu-item" class="menu-item"><a href="#contact">Contact</a></li>
+          <li id="menu-item" class="menu-item"><a href="#people">People</a></li>
+					<li id="menu-item" class="menu-item"><a href="#reference">Reference</a></li>
         </ul>
       </nav>
       <button class="btn-nav for-mo" onclick="gnbOpen();"><span class="blind">메뉴</span></button>
@@ -59,7 +60,7 @@
 
   <!-- main-section-->
 	<section id="mainSec" class="main-section">
-		<div class="visual-sec">
+		<div id="model" class="visual-sec">
 			<div class="swiper main-swiper">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
@@ -113,8 +114,11 @@
 					<div class="swiper-slide">		
 						<a href="/filedown/[KMA] 2024년 해외연수 프로그램(2P)_240617.pdf" target="_blank">
 							<div class="txt-box">
-								<span>2024년 해외연수 프로그램을 한눈에</span>
-								<p><span class="text-for-mo">KMA GLOBAL</span> 연간 프로그램 다운로드</p>
+								<!-- <span>2024년 해외연수 프로그램을 한눈에</span> -->
+								<p>
+									<!-- <span class="text-for-mo">KMA GLOBAL</span>  -->
+									KMA 역량 기반 사내교육 통합제안서
+								</p>
 							</div>
 						</a>
 					</div>
@@ -125,15 +129,15 @@
 		</div>
 	</section>
 	
-	<!-- 글로벌 컨퍼런스 -->
+	<!-- 스페셜 -->
 	<section id="program" class="conference-section p100">
 		<div class="common-cont-area">		
 			<div class="comm-tit-box">
-				<h3 class="comm-tit">글로벌 컨퍼런스</h3>			
+				<h3 class="comm-tit">스페셜</h3>			
 			</div>			
 			<div class="product-list">
 			    <ul id="eduOvrList">
-			    </ul>						
+			    </ul>
 			</div>	
 			<div id="moreBtnArea_eduOvrList" class="btnarea" style="display:none;">
 				<button type="button" class="btn small" id="moreBtn_eduOvrList" onclick="fnEduSbjctSrch('M', 'G');">더보기<i class="icon-more"></i></button>
@@ -141,11 +145,11 @@
 		</div>
 	</section>
 	
-	<!-- 주제별 해외연수 -->
+	<!-- 개인역량 -->
 	<section class="conference-section p100">
 		<div class="common-cont-area">		
 			<div class="comm-tit-box">
-				<h3 class="comm-tit">주제별 해외연수</h3>			
+				<h3 class="comm-tit">개인역량</h3>			
 			</div>			
 			<div class="product-list">
 			    <ul id="eduNorList">
@@ -153,6 +157,38 @@
 			</div>	
 			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
 				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+			</div>
+		</div>
+	</section>
+
+	<!-- 개인역량 -->
+	<section class="conference-section p100">
+		<div class="common-cont-area">		
+			<div class="comm-tit-box">
+				<h3 class="comm-tit">개인역량</h3>			
+			</div>			
+			<div class="product-list">
+					<ul id="eduNorList">
+					</ul>						
+			</div>	
+			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
+				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+			</div>
+		</div>
+	</section>
+
+	<!-- 레퍼런스 -->
+	<section id="reference" class="conference-section p100">
+		<div class="common-cont-area">		
+			<div class="comm-tit-box">
+				<h3 class="comm-tit">레퍼런스</h3>			
+			</div>			
+			<div class="product-list">
+			    <ul id="eduOvrList">
+			    </ul>						
+			</div>	
+			<div id="moreBtnArea_eduOvrList" class="btnarea" style="display:none;">
+				<button type="button" class="btn small" id="moreBtn_eduOvrList" onclick="fnEduSbjctSrch('M', 'G');">더보기<i class="icon-more"></i></button>
 			</div>
 		</div>
 	</section>
@@ -205,7 +241,7 @@
 	</section>
 
 	<!-- 글로벌 연수후기 //id="mainInfotech" -->
-	<section id="review" class="review-section animated p100">
+	<section id="review" class="review-section animated p100" style="display: none;">
 		<div class="area-box">
 			<div class="main-review-wrap">
 				<div class="left-box">
@@ -346,17 +382,17 @@
 			<div class="contact-box">
 				<span>Contact</span>
 				<p class="tel-wrap">
-					<a href="tel:+82232749386">02-3274-9386</a>
+					<!-- <a href="tel:+82232749386">02-3274-9386</a>
 					<a href="tel:+82232749388"> / 9388</a>
-					<a href="tel:+82232749340"> / 9340</a>
-					<a href="mailto:global@kma.or.kr">global@kma.or.kr</a>
+					<a href="tel:+82232749340"> / 9340</a> -->
+					<a href="mailto:global@kma.or.kr">contact@kma.or.kr</a>
 				</p>
-				<a class="inquiry" href="mailto:global@kma.or.kr">KMA 글로벌교육본부 <strong>문의하기</strong></a>
+				<!-- <a class="inquiry" href="mailto:global@kma.or.kr">KMA 글로벌교육본부 <strong>문의하기</strong></a> -->
 			</div>
 			<div class="site-link-wrap">
-				<a href="https://kma.or.kr/kr/main.do" target="_blank">KMA 홈페이지</a>
+				<!-- <a href="https://kma.or.kr/kr/main.do" target="_blank">KMA 홈페이지</a>
 				<a href="https://kma.or.kr/main.do" target="_blank">KMA 러닝센터</a>
-				<a href="https://membership.kma.or.kr/kmaMemberMain.do" target="_blank">KMA 회원사 서비스</a>
+				<a href="https://membership.kma.or.kr/kmaMemberMain.do" target="_blank">KMA 회원사 서비스</a> -->
 				<span class="copyright">2024 All Rights Reserverd ⓒ KMA global </span>
 			</div>
 		</div>  
