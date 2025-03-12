@@ -13,7 +13,8 @@ button{ font-family: inherit; border: none; box-shadow: none; cursor: pointer; }
 .common-area{ width: 1920px; margin: 0 auto; }
 .common-cont-area{ width: 1200px; margin: 0 auto; }
 .p100{ padding: 100px 0; }
-.comm-tit{ font-size: 32px; font-weight: 800; line-height: 32px; letter-spacing: -0.64px; }
+.comm-tit{ font-size: 32px; font-weight: 800; line-height: 32px; letter-spacing: -0.64px; display: flex; align-items: center; justify-content: center; gap: 20px;}
+.comm-tit img {width: 40px;}
 .comm-tit-box{ display: flex; gap: 14px; align-items: center; margin-bottom: 54px; }
 .icon-star{ display: inline-block; width: 18px; height: 19px; background: url('/images/icon_star.svg') no-repeat center center; vertical-align: baseline; }
 .blind { position: absolute; left: -3721em; width: 1px; height: 1px; }
