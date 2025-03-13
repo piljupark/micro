@@ -1,65 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/swiper/swiper-bundle.min.css">
-  <link rel="stylesheet" href="/css/swiper/swiper.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/slick/slick.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="/css/swiper/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/slick/slick.css">
 
-  <!-- JS -->
-  <script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
-  <script type="text/javascript" src="/js/slick-1.8.1/slick/slick.min.js"></script>
-  <script src="/js/swiper-bundle.min.js"></script>
-  <script src="/js/gsap.min.js"></script>
-  <script src="/js/main.js"></script>
-  
-  <script src="/js/common/common_util.js"></script>
-  <script src="/js/common.js"></script>
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script> 
+	<!-- JS -->
+	<script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="/js/slick-1.8.1/slick/slick.min.js"></script>
+	<script src="/js/swiper-bundle.min.js"></script>
+	<script src="/js/gsap.min.js"></script>
+	<script src="/js/main.js"></script>
 
-  
+	<script src="/js/common/common_util.js"></script>
+	<script src="/js/common.js"></script>
+	<script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
+
+	<!-- Scroll Magic -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
 
 </head>
+
 <body>
-  <!-- gnb -->
-<div id="header-outer">
-  <header id="top">
-    <div class="header-inner common-area">
-      <h1>
-          <a class="logo-wrap" id="logo" href="/">
-            <img src="/images/header_logo.png" alt="KMA로고">
-            <span>HRD</span>
-          </a>
-      </h1>
-      <nav class="for-pc">
-        <ul class="menu-items">
-          <li id="menu-item" class="menu-item"><a href="#mainSec">Model</a></li>
-          <li id="menu-item" class="menu-item"><a href="#program">Program</a></li>
-          <li id="menu-item" class="menu-item"><a href="#people">People</a></li>
-					<li id="menu-item" class="menu-item"><a href="#reference">Reference</a></li>
-        </ul>
-      </nav>
-      <button class="btn-nav for-mo" onclick="gnbOpen();"><span class="blind">메뉴</span></button>
-    </div>
-  </header>
-  <div class="mobile-menu for-mo">
-    <button class="btn-close for-mo" onclick="gnbClose();" ><span class="blind">닫기</span></button>
-    <ul class="menu-items">
-      <li id="menu-item" class="menu-item"><a href="#mainSec">Model</a></li>
-			<li id="menu-item" class="menu-item"><a href="#program">Program</a></li>
-			<li id="menu-item" class="menu-item"><a href="#people">People</a></li>
-			<li id="menu-item" class="menu-item"><a href="#reference">Reference</a></li>
-    </ul>
-  </div>
-</div>
+	<!-- gnb -->
+	<div id="header-outer">
+		<header id="top">
+			<div class="header-inner common-area">
+				<h1>
+					<a class="logo-wrap" id="logo" href="/">
+						<img src="/images/header_logo.png" alt="KMA로고">
+						<span>HRD</span>
+					</a>
+				</h1>
+				<nav class="for-pc">
+					<ul class="menu-items">
+						<li id="menu-item" class="menu-item"><a href="#mainSec">Model</a></li>
+						<li id="menu-item" class="menu-item"><a href="#program">Program</a></li>
+						<li id="menu-item" class="menu-item"><a href="#people">People</a></li>
+						<li id="menu-item" class="menu-item"><a href="#reference">Reference</a></li>
+					</ul>
+				</nav>
+				<button class="btn-nav for-mo" onclick="gnbOpen();"><span class="blind">메뉴</span></button>
+			</div>
+		</header>
+		<div class="mobile-menu for-mo">
+			<button class="btn-close for-mo" onclick="gnbClose();"><span class="blind">닫기</span></button>
+			<ul class="menu-items">
+				<li id="menu-item" class="menu-item"><a href="#mainSec">Model</a></li>
+				<li id="menu-item" class="menu-item"><a href="#program">Program</a></li>
+				<li id="menu-item" class="menu-item"><a href="#people">People</a></li>
+				<li id="menu-item" class="menu-item"><a href="#reference">Reference</a></li>
+			</ul>
+		</div>
+	</div>
 
 
 
-  <!-- main-section-->
+	<!-- main-section-->
 	<section id="mainSec" class="main-section">
 		<div class="visual-sec">
 			<div class="swiper main-swiper">
@@ -74,7 +81,7 @@
 							</h2>
 							<button onclick="goDtlPg(1);">자세히보기<i></i></button>
 						</div>
-					</div>					
+					</div>
 					<div class="swiper-slide">
 						<div class="txt-box">
 							<!-- <span>222</span> -->
@@ -106,13 +113,13 @@
 			</div>
 		</div>
 	</section>
-	
-	<!-- banner-section : 연간 프로그램 다운로드 -->
-	<section  id="bannerSec" class="banner-section">
+
+	<!-- banner-section : 통합제안서 -->
+	<section id="bannerSec" class="banner-section">
 		<div class="common-cont-area">
 			<div class="swiper banner-swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">		
+					<div class="swiper-slide">
 						<a href="/filedown/[KMA] 2024년 해외연수 프로그램(2P)_240617.pdf" target="_blank">
 							<div class="txt-box">
 								<!-- <span>2024년 해외연수 프로그램을 한눈에</span> -->
@@ -129,57 +136,79 @@
 			</div>
 		</div>
 	</section>
-	
+
+	<!-- 컨텐츠 -->
+	<section class="cont-section">
+		<div class="spacer"></div>
+		<div class="trigger" id="trigger1"></div>
+		<div class="wrap">
+			<div class="inner-wrap">
+				<div class="s-txt s-txt1">KMA Talent Development </div>
+				<div class="round-wrap">
+					<div class="round">
+
+					</div>
+				</div>
+				<div class="s-txt s-txt2">Capability Model</div>
+			</div>
+		</div>
+		<div class="space"></div>
+	</section>
+
+
 	<!-- 스페셜 -->
 	<section id="program" class="conference-section p100">
-		<div class="common-cont-area">		
+		<div class="common-cont-area">
 			<div class="comm-tit-box">
-				<h3 class="comm-tit">스페셜</h3>			
-			</div>			
+				<h3 class="comm-tit">스페셜</h3>
+			</div>
 			<div class="product-list">
-			    <ul id="eduOvrList">
-			    </ul>
-			</div>	
+				<ul id="eduOvrList">
+				</ul>
+			</div>
 			<div id="moreBtnArea_eduOvrList" class="btnarea" style="display:none;">
-				<button type="button" class="btn small" id="moreBtn_eduOvrList" onclick="fnEduSbjctSrch('M', 'G');">더보기<i class="icon-more"></i></button>
+				<button type="button" class="btn small" id="moreBtn_eduOvrList" onclick="fnEduSbjctSrch('M', 'G');">더보기<i
+						class="icon-more"></i></button>
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- 개인역량 -->
 	<section class="conference-section p100">
-		<div class="common-cont-area">		
+		<div class="common-cont-area">
 			<div class="comm-tit-box">
 				<h3 class="comm-tit">
 					<img src="images/shape1.svg" alt="개인역량">
 					개인역량
-				</h3>			
-			</div>			
+				</h3>
+			</div>
 			<div class="product-list">
-			    <ul id="eduNorList">
-			    </ul>						
-			</div>	
+				<ul id="eduNorList">
+				</ul>
+			</div>
 			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
-				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i
+						class="icon-more"></i></button>
 			</div>
 		</div>
 	</section>
 
 	<!-- 조직역량 -->
 	<section class="conference-section p100">
-		<div class="common-cont-area">		
+		<div class="common-cont-area">
 			<div class="comm-tit-box">
 				<h3 class="comm-tit">
 					<img src="/images/shape2.svg" alt="조직역량">
 					조직역량
-				</h3>			
-			</div>			
+				</h3>
+			</div>
 			<div class="product-list">
-					<ul id="eduNorList">
-					</ul>						
-			</div>	
+				<ul id="eduNorList">
+				</ul>
+			</div>
 			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
-				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i
+						class="icon-more"></i></button>
 			</div>
 		</div>
 	</section>
@@ -189,7 +218,7 @@
 		<div class="common-cont-area">
 			<div class="swiper banner-swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">		
+					<div class="swiper-slide">
 						<a href="/filedown/[KMA] 2024년 해외연수 프로그램(2P)_240617.pdf" target="_blank">
 							<div class="txt-box">
 								<!-- <span>2024년 해외연수 프로그램을 한눈에</span> -->
@@ -208,55 +237,58 @@
 	</section>
 
 	<!-- 조직역량 -->
-	<section class="conference-section p100">
-		<div class="common-cont-area">		
+	<section id="people" class="conference-section p100">
+		<div class="common-cont-area">
 			<div class="comm-tit-box">
 				<h3 class="comm-tit">
 					<img src="/images/shape3.svg" alt="특화역량">
 					특화역량
-				</h3>			
-			</div>			
+				</h3>
+			</div>
 			<div class="product-list">
-					<ul id="eduNorList">
-					</ul>						
-			</div>	
+				<ul id="eduNorList">
+				</ul>
+			</div>
 			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
-				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i
+						class="icon-more"></i></button>
 			</div>
 		</div>
 	</section>
 
 	<!-- 전문역량 -->
 	<section class="conference-section p100">
-		<div class="common-cont-area">		
+		<div class="common-cont-area">
 			<div class="comm-tit-box">
 				<h3 class="comm-tit">
 					<img src="/images/shape4.svg" alt="전문역량">
 					전문역량
-				</h3>			
-			</div>			
+				</h3>
+			</div>
 			<div class="product-list">
-					<ul id="eduNorList">
-					</ul>						
-			</div>	
+				<ul id="eduNorList">
+				</ul>
+			</div>
 			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
-				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+				<button type="button" class="btn small" id="moreBtn_eduNorList" onclick="fnEduSbjctSrch('M', 'N');">더보기<i
+						class="icon-more"></i></button>
 			</div>
 		</div>
 	</section>
 
 	<!-- 레퍼런스 -->
 	<section id="reference" class="conference-section p100">
-		<div class="common-cont-area">		
+		<div class="common-cont-area">
 			<div class="comm-tit-box">
-				<h3 class="comm-tit">레퍼런스</h3>			
-			</div>			
+				<h3 class="comm-tit">레퍼런스</h3>
+			</div>
 			<div class="product-list">
-			    <ul id="eduOvrList">
-			    </ul>						
-			</div>	
+				<ul id="eduOvrList">
+				</ul>
+			</div>
 			<div id="moreBtnArea_eduOvrList" class="btnarea" style="display:none;">
-				<button type="button" class="btn small" id="moreBtn_eduOvrList" onclick="fnEduSbjctSrch('M', 'G');">더보기<i class="icon-more"></i></button>
+				<button type="button" class="btn small" id="moreBtn_eduOvrList" onclick="fnEduSbjctSrch('M', 'G');">더보기<i
+						class="icon-more"></i></button>
 			</div>
 		</div>
 	</section>
@@ -308,7 +340,7 @@
 		</div>
 	</section>
 
-	
+
 
 	<!-- footer -->
 	<footer id="contact">
@@ -329,20 +361,68 @@
 				<a href="https://membership.kma.or.kr/kmaMemberMain.do" target="_blank">KMA 회원사 서비스</a> -->
 				<span class="copyright">2025 All Rights Reserverd ⓒ KMA HRD </span>
 			</div>
-		</div>  
+		</div>
 	</footer>
 
 	<!-- Quick Menu -->
 	<div id="quickMenu" class="quick-menu">
 		<a class="kakao" href="https://pf.kakao.com/_uTAUT" target="_blank"></a>
-		<a class="blog" href="https://blog.naver.com/NBlogTop.naver?isHttpsRedirect=true&blogId=kmablog" target="_blank"></a>
+		<a class="blog" href="https://blog.naver.com/NBlogTop.naver?isHttpsRedirect=true&blogId=kmablog"
+			target="_blank"></a>
 		<a class="youtube" href="https://www.youtube.com/channel/UCCH_1SVTb4BaXMAbLf5n1kQ" target="_blank"></a>
 		<a class="mail" href="mailto:edu@kma.or.kr"></a>
 		<a class="gototop" href="#" onclick="goToGo();"></a>
 	</div>
 
 
-  
+	<!-- Scroll Magic -->
+	<script>
+		$(function () {
+			var controller = new ScrollMagic.Controller();
+
+			// 📌 Step 1: s-txt1 margin-right 애니메이션
+			var tween1 = TweenMax.to('.s-txt1', 0.5, { marginRight: '200px' });
+
+// 📌 Step 2: round-wrap이 위로 올라옴
+var tween2 = TweenMax.to('.round-wrap', 0.5, { y: -100, ease: Power2.easeOut });
+
+// 📌 Step 3: 모든 s-txt 요소에 opacity 애니메이션 적용
+var tween3 = TweenMax.to('.s-txt', 0.5, { opacity: 1 });
+
+// 📌 Scene 1: s-txt1 이동
+var scene1 = new ScrollMagic.Scene({
+		triggerElement: '#trigger1',
+		duration: '50%',
+})
+		.setTween(tween1)
+		.addTo(controller)
+		.setPin('.wrap')
+		.addIndicators();
+
+// 📌 Scene 2: round-wrap 위로 이동 (s-txt1 애니메이션 후 실행)
+var scene2 = new ScrollMagic.Scene({
+		triggerElement: '#trigger1',
+		duration: '50%',
+		offset: 200 // 약간의 딜레이 추가
+})
+		.setTween(tween2)
+		.addTo(controller)
+		.addIndicators();
+
+// 📌 Scene 3: 모든 s-txt 요소 fade-in (round-wrap 애니메이션 후 실행)
+var scene3 = new ScrollMagic.Scene({
+		triggerElement: '#trigger1',
+		duration: '50%',
+		offset: 400 // 추가적인 딜레이
+})
+		.setTween(tween3)
+		.addTo(controller)
+		.addIndicators();
+});
+
+	</script>
+
 
 </body>
+
 </html>

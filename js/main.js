@@ -11,44 +11,54 @@
         var scrollPosition = $(window).scrollTop();
         var windowHeight = $(window).height();
         var documentHeight = $(document).height();
+        // var mainPosition = $('#mainSec').offset().top;
+        // var mainHeight = $('#mainSec').innerHeight();
+        // var bannerPosition = $('#bannerSec').offset().top;
+        // var bannerHeight = $('#bannerSec').innerHeight();
+        // var programPosition = $('#program').offset().top - 200;
+        // var programHeight = $('#program').innerHeight();
+        // var peoplePosition = $('#people').offset().top - 200;
+        // var bannerBgPosition = $('#bannerBgSec').offset().top;
+        // var contactPosition = $('#reference').offset().top - 200;
+        // var contactHeight = $('#reference').innerHeight();
+
         var mainPosition = $('#mainSec').offset().top;
-        var mainHeight = $('#mainSec').innerHeight();
-        var bannerPosition = $('#bannerSec').offset().top;
-        var bannerHeight = $('#bannerSec').innerHeight();
-        var programPosition = $('#program').offset().top;
-        var programHeight = $('#program').innerHeight();
-        var reviewPosition = $('#review').offset().top;
-        var bannerBgPosition = $('#bannerBgSec').offset().top;
-        var contactPosition = $('#contact').offset().top;
-        var contactHeight = $('#contact').innerHeight();
+        var programPosition = $('#program').offset().top - 300;  // 120px 간격 추가
+        var peoplePosition = $('#people').offset().top - 300;
+        var bannerBgPosition = $('#bannerBgSec').offset().top - 300;
+        var referencePosition = $('#reference').offset().top - 300;
+
+        $('.menu-item').removeClass('on');  // 모든 메뉴의 .on 제거
         
-        $('.menu-item').each(function() {
-            var linkHref = $(this).find('a').attr('href');
-            if (linkHref === '#program' && scrollPosition >= 400 && scrollPosition < bannerBgPosition) {
-                $(this).addClass('on');
-                $(this).siblings('.menu-item').removeClass('on');
-            } else if (linkHref === '#review' && scrollPosition + 210 > bannerBgPosition  && scrollPosition <= reviewPosition) {
-                $(this).addClass('on');
-                $(this).siblings('.menu-item').removeClass('on');
-            } else if (linkHref === '#contact' && scrollPosition + 200 >= reviewPosition && scrollPosition >= documentHeight - 300) {
-                $(this).addClass('on');
-                $(this).siblings('.menu-item').removeClass('on');
-            } else {
-                $(this).removeClass('on');
-            }
+        // 📌 #program 전까지는 #mainSec이 활성화
+        if (scrollPosition < programPosition) {
+            $(".menu-item a[href='#mainSec']").parent().addClass('on');
+        }
+        // 📌 #program 활성화
+        else if (scrollPosition >= programPosition && scrollPosition < peoplePosition) {
+            $(".menu-item a[href='#program']").parent().addClass('on');
+        }
+        // 📌 #people 활성화
+        else if (scrollPosition >= peoplePosition && scrollPosition < referencePosition) {
+            $(".menu-item a[href='#people']").parent().addClass('on');
+        }
+        // 📌 #reference 활성화
+        else if (scrollPosition >= referencePosition) {
+            $(".menu-item a[href='#reference']").parent().addClass('on');
+        }
 
-            if (scrollPosition + windowHeight >= documentHeight - 10) {
-                $('.menu-item').eq(1).removeClass('on');
-                $('.menu-item').eq(2).addClass('on');
-            }
+        // 📌 맨 아래 도달 시 #reference 유지
+        if (scrollPosition + windowHeight >= documentHeight - 10) {
+            $(".menu-item").removeClass("on");
+            $(".menu-item a[href='#reference']").parent().addClass("on");
+        }
 
-            //글로벌 연수후기
-            if( bannerBgPosition < scrollPosition+300){
-                $("#review").addClass('animated');
-            }else{
-                $("#review").removeClass('animated');
-            }
-        });
+        // 📌 #reference 애니메이션 적용
+        if (scrollPosition + 1400 > bannerBgPosition) {
+            $("#reference").addClass('animated');
+        } else {
+            $("#reference").removeClass('animated');
+        }
 
         //Quick Menu
         var footerTop = $('footer').offset().top;
@@ -70,6 +80,7 @@
         }
     }); //End of the $(window).scroll
 })(); //End of the 즉시실행함수 (function() {}
+
 
 $(document).ready(function() {
     // 모바일 화면 크기 정의
