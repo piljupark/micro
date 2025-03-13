@@ -98,8 +98,6 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 .cont-section .wrap .inner-wrap {
 	position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; transition: all 1s;
 }
-
-
 .cont-section .wrap .s-txt {font-size: 48px;}
 
 
