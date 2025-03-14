@@ -78,7 +78,7 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 .banner-section { padding: 70px 0; background-color: #f0f3fc; } 
 .banner-section .banner-swiper { position: relative; width: 100%; height: 213px; } 
 .banner-section .banner-swiper .swiper-slide { height: 180px; border-radius: 16px; cursor: pointer; } 
-.banner-section .banner-swiper .swiper-slide:nth-child(1) { background: url('/images/banner_slide_bg_02.webp') no-repeat center center / cover; } 
+.banner-section .banner-swiper .swiper-slide:nth-child(1) { background: url('/images/banner_slide_bg_hrd.png') no-repeat center center / cover; } 
 .banner-section .banner-swiper .swiper-slide:nth-child(2) { background: url('/images/banner_slide_bg_01.webp') no-repeat center center / cover; } 
 .banner-section .banner-swiper .swiper-slide:nth-child(3) { background: url('/images/banner_slide_bg_01.webp') no-repeat center center / cover; } 
 .banner-section .banner-swiper .txt-box { position: absolute; top: 50%; right: 60px; transform: translateY(-50%); } 
@@ -90,15 +90,51 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 
 
 /* ****************** 컨텐츠 ********************** */
-.cont-section {position: relative; width: 100%; height: 400vh; background-image: url('/images/bg_cont.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;}
 
-.cont-section .trigger { position: absolute; width: 100%; height: 100px; background: #eee; top: 50vh;}
+.cont-section { position: relative; width: 100%; height: auto; }
 
-.cont-section .wrap {position: relative; width: 100%; height: 100vh;}
-.cont-section .wrap .inner-wrap {
-	position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; transition: all 1s;
-}
-.cont-section .wrap .s-txt {font-size: 48px;}
+.cont-section .txt-wrap {position: sticky; width: 100%; height: 100vh; top:0; font-size: 48px; font-weight: 600; line-height: 72px; letter-spacing: -1.68px; display: flex; justify-content: center; align-items: center; gap: 15px; background-image: url('/images/bg_cont.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; transition: gap 0.5s ease-in-out;}
+.cont-section .txt-wrap .txt {transition: opacity 0.5s ease-in-out; }
+.cont-section .txt-wrap .txt2 {min-width: 520px;}
+
+.cont-section .round-wrap1 { position: sticky; width: 100%; height: 100vh; top:0; display: flex; align-items: center; justify-content: center;}
+
+.cont-section .round-wrap1 .round {box-shadow: 0px 3px 100px 0px rgba(0, 0, 0, 0.15);}
+
+.cont-section .round-wrap2 { position: sticky; width: 100%; height: 100vh; top: 0; display: flex; align-items: center; justify-content: center; }
+
+.cont-section .round-wrap3 { position: sticky; width: 100%; height: 100vh; top: 0; display: flex; align-items: center; justify-content: center;}
+
+.cont-section .round-wrap4 { position: sticky; width: 100%; height: 100vh; top: 0; display: flex; align-items: center; justify-content: center;}
+
+
+.cont-section .round-wrap1 img, .cont-section .round-wrap2 img, .cont-section .round-wrap3 img, .cont-section .round-wrap4 img{ width: 72px; opacity: .4;}
+
+.cont-section .round { width: 250px; height: 250px; background: #fff; border-radius: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 40px; font-weight: 600; line-height: 72px; letter-spacing: -1.68px; }
+
+
+.cont-section .round-al-wrap .round-al {width: 250px; height: 250px; background: #fff; border-radius: 100%; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 26px; font-weight: 600; line-height: 37px; letter-spacing: -1.68px;}
+
+.cont-section .round-al-wrap {position: sticky; top: 0; width: 100%; height: 100vh; display: grid; grid-template-columns: repeat(2, 1fr); opacity: 1; z-index: 10;} 
+
+.cont-section .round-al-wrap .sec {position: relative; opacity: 0;}
+.cont-section .round-al-wrap .sec1 {background: #EDF9F7;}
+.cont-section .round-al-wrap .sec2 {background: #FFF4F3;}
+.cont-section .round-al-wrap .sec3 {background: #F8F3FF;}
+.cont-section .round-al-wrap .sec4 {background: #EEFBFF;}
+
+.cont-section .round-al-wrap .sec img { position: absolute; width: 300px; opacity: .25; top: 50%; left: 3vw; transform: translate(0, -50%);}
+
+.cont-section .round-al-wrap .sec:nth-child(even) img {left: unset; right: 3vw;}
+
+.cont-section .round-al-wrap img.round-bg-cap {position: absolute; width: 540px; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0;}
+
+.cont-section .round-al-wrap img.round-bg-cap2 {width: 880px;}
+
+.cont-section .round-al-wrap img.round-bg-cap3 {width: 943px;}
+
+.cont-section .round-al-wrap .round-al { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 250px; height: 250px; background: #fff; border-radius: 100%; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 26px; font-weight: 600; line-height: 37px; letter-spacing: -1.68px; box-shadow: 0px 3px 100px 0px rgba(0, 0, 0, 0.15);}
+
 
 
 /* ****************** 컨퍼런스 해외연수, 글로벌 컨퍼런스 (더보기) ********************** */

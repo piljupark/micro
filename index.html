@@ -22,11 +22,6 @@
 	<script src="/js/common.js"></script>
 	<script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
 
-	<!-- Scroll Magic -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 
 
 </head>
@@ -139,21 +134,59 @@
 
 	<!-- 컨텐츠 -->
 	<section class="cont-section">
-		<div class="spacer"></div>
-		<div class="trigger" id="trigger1"></div>
-		<div class="wrap">
-			<div class="inner-wrap">
-				<div class="s-txt s-txt1">KMA Talent Development </div>
-				<div class="round-wrap">
-					<div class="round">
-
-					</div>
-				</div>
-				<div class="s-txt s-txt2">Capability Model</div>
-			</div>
+		<div class="txt-wrap">
+			<p class="txt txt1">KMA Talent Development</p>
+			<p class="txt txt2">Capability Model</p>
+	</div>
+	<div class="round-wrap1">
+		<div class="round">
+			<img src="/images/shape1.svg" alt="개인역량">
+			개인역량
 		</div>
-		<div class="space"></div>
-	</section>
+	</div>
+	<div class="round-wrap2">
+		<div class="round">
+			<img src="/images/shape2.svg" alt="특화역량">
+			특화역량
+		</div>
+	</div>
+	<div class="round-wrap3">
+		<div class="round">
+			<img src="/images/shape3.svg" alt="조직역량">
+			조직역량
+		</div>
+	</div>
+	<div class="round-wrap4">
+		<div class="round">
+			<img src="/images/shape4.svg" alt="전문역량">
+			전문역량
+		</div>
+	</div>
+	<div class="round-al-wrap">
+		<div class="sec sec1">
+			<img src="/images/shape1.svg" alt="개인역량">
+		</div>
+		<div class="sec sec2">
+			<img src="/images/shape2.svg" alt="특화역량">
+		</div>
+		<div class="sec sec3">
+			<img src="/images/shape3.svg" alt="조직역량">
+		</div>
+		<div class="sec sec4">
+			<img src="/images/shape4.svg" alt="전문역량">
+		</div>
+
+		<img src="/images/img_cap3.png" alt="역량별 카테고리" class="round-bg-cap round-bg-cap3">
+		<img src="/images/img_cap2.png" alt="역량별 카테고리" class="round-bg-cap round-bg-cap2">
+		<img src="/images/img_cap1.png" alt="역량별 카테고리" class="round-bg-cap round-bg-cap1">
+		<div class="round-al">
+			KMA <br>
+			Talent Development <br>
+			Capability Model
+		</div>
+	</div>
+
+</section>
 
 
 	<!-- 스페셜 -->
@@ -374,54 +407,100 @@
 		<a class="gototop" href="#" onclick="goToGo();"></a>
 	</div>
 
+<script>
+		document.addEventListener("DOMContentLoaded", () => {
+    const txtWrap = document.querySelector(".txt-wrap");
+    const txtElements = document.querySelectorAll(".txt-wrap .txt");
+    const txt1 = document.querySelector(".txt:nth-child(1)"); // 첫 번째 텍스트
+    const roundWrap1 = document.querySelector(".round-wrap1");
+    const roundAlWrap = document.querySelector(".round-al-wrap");
+    const roundBgCaps = document.querySelectorAll(".round-bg-cap"); // round-bg-cap 이미지들
+		const secElements = document.querySelectorAll(".round-al-wrap .sec");
 
-	<!-- Scroll Magic -->
-	<script>
-		$(function () {
-			var controller = new ScrollMagic.Controller();
+    let isSticky = false; // sticky 상태 추적
+    let opacityTimeouts = []; // 투명도 변화를 위한 timeout 추적
 
-			// 📌 Step 1: s-txt1 margin-right 애니메이션
-			var tween1 = TweenMax.to('.s-txt1', 0.5, { marginRight: '200px' });
+    window.addEventListener("scroll", () => {
+        let roundWrap1Rect = roundWrap1.getBoundingClientRect();
+        let roundAlWrapRect = roundAlWrap.getBoundingClientRect();
+        let viewportHeight = window.innerHeight;
+        let contSection = document.querySelector(".cont-section");
 
-// 📌 Step 2: round-wrap이 위로 올라옴
-var tween2 = TweenMax.to('.round-wrap', 0.5, { y: -100, ease: Power2.easeOut });
+        // round-wrap1이 화면 중앙에 있을 때 gap 300px로 조절
+        if (roundWrap1Rect.top <= viewportHeight / 2 && roundWrap1Rect.bottom >= viewportHeight / 2) {
+            txtWrap.style.gap = "300px";
+            txt1.style.marginLeft = "0";  // 첫 번째 텍스트의 margin-left를 0으로 설정
+        } else {
+            txtWrap.style.gap = "15px";
+            txt1.style.marginLeft = "";  // 기본값으로 복원
+        }
 
-// 📌 Step 3: 모든 s-txt 요소에 opacity 애니메이션 적용
-var tween3 = TweenMax.to('.s-txt', 0.5, { opacity: 1 });
+        // round-al-wrap이 cont-section의 중앙에 도달했을 때
+        if (roundAlWrapRect.top <= viewportHeight / 2 && roundAlWrapRect.bottom >= viewportHeight / 2) {
+            if (!isSticky) {
+                isSticky = true; // sticky 상태 시작
 
-// 📌 Scene 1: s-txt1 이동
-var scene1 = new ScrollMagic.Scene({
-		triggerElement: '#trigger1',
-		duration: '50%',
-})
-		.setTween(tween1)
-		.addTo(controller)
-		.setPin('.wrap')
-		.addIndicators();
+                // round-bg-cap1 이미지가 2초 후에 나타나기 시작
+                setTimeout(() => {
+                    roundBgCaps[2].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
+                    roundBgCaps[2].style.opacity = 1; // 투명도를 1로 변경
 
-// 📌 Scene 2: round-wrap 위로 이동 (s-txt1 애니메이션 후 실행)
-var scene2 = new ScrollMagic.Scene({
-		triggerElement: '#trigger1',
-		duration: '50%',
-		offset: 200 // 약간의 딜레이 추가
-})
-		.setTween(tween2)
-		.addTo(controller)
-		.addIndicators();
+                    // round-bg-cap1의 opacity가 1이 될 때 .sec의 opacity도 1로 변경
+                    secElements.forEach((sec) => {
+                        sec.style.transition = "opacity 1s ease-in-out";
+                        sec.style.opacity = 1;
+                    });
+                }, 2000); // 2초 후
 
-// 📌 Scene 3: 모든 s-txt 요소 fade-in (round-wrap 애니메이션 후 실행)
-var scene3 = new ScrollMagic.Scene({
-		triggerElement: '#trigger1',
-		duration: '50%',
-		offset: 400 // 추가적인 딜레이
-})
-		.setTween(tween3)
-		.addTo(controller)
-		.addIndicators();
+                // round-bg-cap2 이미지가 round-bg-cap1의 투명도 변화 완료 후 1초 뒤에 나타나기 시작
+                setTimeout(() => {
+                    roundBgCaps[1].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
+                    roundBgCaps[1].style.opacity = 1; // 투명도를 1로 변경
+                }, 3000); // round-bg-cap1의 투명도 변화 후 1초 뒤
+
+                // round-bg-cap3 이미지가 round-bg-cap2의 투명도 변화 완료 후 1초 뒤에 나타나기 시작
+                setTimeout(() => {
+                    roundBgCaps[0].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
+                    roundBgCaps[0].style.opacity = 1; // 투명도를 1로 변경
+                }, 4000); // round-bg-cap2의 투명도 변화 후 1초 뒤
+            }
+
+            // round-al-wrap이 중앙에 도달하면 .txt 요소들의 opacity를 0으로 변경
+            txtElements.forEach(txt => {
+                txt.style.opacity = 0;
+            });
+
+        } else {
+            // round-al-wrap이 화면을 벗어나면 상태 초기화
+            roundBgCaps.forEach((img) => {
+                img.style.opacity = 0; // 모든 이미지의 opacity를 0으로 설정
+            });
+
+            // .txt 요소들의 opacity를 복원
+            txtElements.forEach(txt => {
+                txt.style.opacity = 1;
+            });
+
+            // sticky 상태 초기화 및 timeout 클리어
+            isSticky = false;
+            opacityTimeouts.forEach(timeout => clearTimeout(timeout));
+            opacityTimeouts = []; // 타임아웃 배열 초기화
+        }
+
+        // .txt의 opacity 자연스럽게 변화
+        if (roundAlWrapRect.top <= viewportHeight) {
+            let opacity = roundAlWrapRect.top / viewportHeight; // 1에서 0으로 줄어듦
+            txtElements.forEach(txt => {
+                txt.style.opacity = opacity;
+            });
+        } else {
+            txtElements.forEach(txt => {
+                txt.style.opacity = 1;
+            });
+        }
+    });
 });
-
-	</script>
-
+</script>
 
 </body>
 
