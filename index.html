@@ -428,7 +428,11 @@
 
 				// round-wrap1이 화면 중앙에 있을 때 gap 300px로 조절
 				if (roundWrap1Rect.top <= viewportHeight / 2 && roundWrap1Rect.bottom >= viewportHeight / 2) {
-					txtWrap.style.gap = "19vw";
+					if (window.innerWidth <= 768) {
+						txtWrap.style.gap = "140px";
+					} else {
+						txtWrap.style.gap = "19vw";
+					}
 					txt1.style.marginLeft = "0";  // 첫 번째 텍스트의 margin-left를 0으로 설정
 				} else {
 					txtWrap.style.gap = "15px";
@@ -450,19 +454,19 @@
 								sec.style.transition = "opacity 1s ease-in-out";
 								sec.style.opacity = 1;
 							});
-						}, 2000); // 2초 후
+						}, 1200); // 1.2초 뒤에 나타나기 시작
 
 						// round-bg-cap2 이미지가 round-bg-cap1의 투명도 변화 완료 후 1초 뒤에 나타나기 시작
 						setTimeout(() => {
 							roundBgCaps[1].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
 							roundBgCaps[1].style.opacity = 1; // 투명도를 1로 변경
-						}, 3000); // round-bg-cap1의 투명도 변화 후 1초 뒤
+						}, 1600); // round-bg-cap1의 투명도 변화 후 1초 뒤
 
 						// round-bg-cap3 이미지가 round-bg-cap2의 투명도 변화 완료 후 1초 뒤에 나타나기 시작
 						setTimeout(() => {
 							roundBgCaps[0].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
 							roundBgCaps[0].style.opacity = 1; // 투명도를 1로 변경
-						}, 4000); // round-bg-cap2의 투명도 변화 후 1초 뒤
+						}, 2000); // round-bg-cap2의 투명도 변화 후 1초 뒤
 					}
 
 					// round-al-wrap이 중앙에 도달하면 .txt 요소들의 opacity를 0으로 변경
