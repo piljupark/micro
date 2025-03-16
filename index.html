@@ -411,7 +411,8 @@
 		document.addEventListener("DOMContentLoaded", () => {
 			const txtWrap = document.querySelector(".txt-wrap");
 			const txtElements = document.querySelectorAll(".txt-wrap .txt");
-			const txt1 = document.querySelector(".txt:nth-child(1)"); // 첫 번째 텍스트
+			const txt1 = document.querySelector(".txt-wrap .txt1"); // 첫 번째 텍스트
+			const txt2 = document.querySelector(".txt-wrap .txt2");
 			const roundWrap1 = document.querySelector(".round-wrap1");
 			const roundAlWrap = document.querySelector(".round-al-wrap");
 			const roundBgCaps = document.querySelectorAll(".round-bg-cap"); // round-bg-cap 이미지들
@@ -430,13 +431,17 @@
 				if (roundWrap1Rect.top <= viewportHeight / 2 && roundWrap1Rect.bottom >= viewportHeight / 2) {
 					if (window.innerWidth <= 768) {
 						txtWrap.style.gap = "140px";
+						txt2.style.width = "auto";
 					} else {
-						txtWrap.style.gap = "19vw";
+						txtWrap.style.gap = "clamp(260px, 30vw, 600px)";
+						txt1.style.marginLeft = "clamp(-110px, -20vw, -100px)"; 
+						txt2.style.width = "clamp(200px, 30vw, 487px)";
 					}
 					txt1.style.marginLeft = "0";  // 첫 번째 텍스트의 margin-left를 0으로 설정
+					txt2.style.width = "auto";
 				} else {
 					txtWrap.style.gap = "15px";
-					txt1.style.marginLeft = "";  // 기본값으로 복원
+					txt1.style.marginLeft = "0";  // 기본값으로 복원
 				}
 
 				// round-al-wrap이 cont-section의 중앙에 도달했을 때
