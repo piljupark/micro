@@ -175,7 +175,7 @@
 			<div class="sec sec4">
 				<img src="/images/shape4.svg" alt="전문역량">
 			</div>
-
+	
 			<img src="/images/img_cap3.png" alt="역량별 카테고리" class="round-bg-cap round-bg-cap3">
 			<img src="/images/img_cap2.png" alt="역량별 카테고리" class="round-bg-cap round-bg-cap2">
 			<img src="/images/img_cap1.png" alt="역량별 카테고리" class="round-bg-cap round-bg-cap1">
@@ -185,7 +185,111 @@
 				Capability Model
 			</div>
 		</div>
-
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const txt2 = document.querySelector(".txt-wrap .txt2");
+				const contSection = document.querySelector(".cont-section"); // cont-section 요소 선택
+				const roundWraps = [
+					{ element: document.querySelector(".round-wrap1"), text: "Building Personal Capability" },
+					{ element: document.querySelector(".round-wrap2"), text: "Impacting Organizational Capability" },
+					{ element: document.querySelector(".round-wrap3"), text: "Developing Specialized Capability" },
+					{ element: document.querySelector(".round-wrap4"), text: "Developing Professional Capability" },
+				];
+	
+				let lastScrollY = window.scrollY; // 마지막 스크롤 위치 저장
+				let isScrolling = false; // 스크롤 이벤트 최적화를 위한 플래그
+				let currentText = "Capability Model"; // 현재 표시된 텍스트를 추적
+	
+				// Intersection Observer 설정
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							const currentScrollY = window.scrollY; // 현재 스크롤 위치
+							const isScrollingDown = currentScrollY > lastScrollY; // 스크롤 방향 확인
+	
+							if (entry.isIntersecting) {
+								const targetWrap = roundWraps.find((wrap) => wrap.element === entry.target);
+								if (targetWrap && currentText !== targetWrap.text) {
+									// 텍스트가 이미 표시된 경우 변경하지 않음
+									currentText = targetWrap.text;
+	
+									// Fade-out 효과
+									txt2.style.transition = "opacity 0.5s ease-out";
+									txt2.style.opacity = 0;
+	
+									// 텍스트 변경 후 Fade-in 효과
+									setTimeout(() => {
+										txt2.textContent = targetWrap.text;
+										txt2.style.transition = "opacity 0.5s ease-in";
+										txt2.style.opacity = 1;
+									}, 500); // Fade-out 완료 후 텍스트 변경
+								}
+							} else {
+								// 요소가 뷰포트를 벗어날 때 처리 (스크롤 업)
+								if (!isScrollingDown) {
+									const previousWrapIndex = roundWraps.findIndex((wrap) => wrap.element === entry.target) - 1;
+									if (previousWrapIndex >= 0) {
+										const previousWrap = roundWraps[previousWrapIndex];
+										if (currentText !== previousWrap.text) {
+											// 텍스트가 이미 표시된 경우 변경하지 않음
+											currentText = previousWrap.text;
+	
+											// Fade-out 효과
+											txt2.style.transition = "opacity 0.5s ease-out";
+											txt2.style.opacity = 0;
+	
+											// 텍스트 변경 후 Fade-in 효과
+											setTimeout(() => {
+												txt2.textContent = previousWrap.text;
+												txt2.style.transition = "opacity 0.5s ease-in";
+												txt2.style.opacity = 1;
+											}, 500); // Fade-out 완료 후 텍스트 변경
+										}
+									}
+								}
+							}
+	
+							lastScrollY = currentScrollY; // 마지막 스크롤 위치 업데이트
+						});
+					},
+					{
+						root: null, // 뷰포트를 기준으로 관찰
+						threshold: 0.5, // 요소가 뷰포트의 절반 이상 보일 때 트리거
+					}
+				);
+	
+				// 각 round-wrap 요소를 관찰
+				roundWraps.forEach((wrap) => observer.observe(wrap.element));
+	
+				// 스크롤 이벤트 추가: 최상단에 도달했을 때 기본 텍스트로 변경
+				window.addEventListener("scroll", () => {
+					if (!isScrolling) {
+						isScrolling = true;
+						requestAnimationFrame(() => {
+							const contSectionTop = contSection.getBoundingClientRect().top;
+	
+							if (contSectionTop >= 0 && currentText !== "Capability Model") {
+								// 텍스트가 이미 'Capability Model'인 경우 변경하지 않음
+								currentText = "Capability Model";
+	
+								// Fade-out 효과
+								txt2.style.transition = "opacity 0.5s ease-out";
+								txt2.style.opacity = 0;
+	
+								// 텍스트 변경 후 Fade-in 효과
+								setTimeout(() => {
+									txt2.textContent = "Capability Model";
+									txt2.style.transition = "opacity 0.5s ease-in";
+									txt2.style.opacity = 1;
+								}, 500); // Fade-out 완료 후 텍스트 변경
+							}
+	
+							isScrolling = false; // 스크롤 처리 완료
+						});
+					}
+				});
+			});
+		</script>
 	</section>
 
 
@@ -433,9 +537,11 @@
 						txtWrap.style.gap = "140px";
 						txt2.style.width = "auto";
 					} else {
-						txtWrap.style.gap = "clamp(260px, 30vw, 600px)";
+						txtWrap.style.gap = "clamp(260px, 30vw, 400px)";
 						txt1.style.marginLeft = "clamp(-110px, -20vw, -100px)"; 
-						txt2.style.width = "clamp(200px, 30vw, 487px)";
+						txt2.style.width = "32vw";
+						txt2.style.minWidth = "200px";
+						txt2.style.maxWidth = "350px";
 					}
 					txt1.style.marginLeft = "0";  // 첫 번째 텍스트의 margin-left를 0으로 설정
 					
@@ -450,7 +556,7 @@
 					if (!isSticky) {
 						isSticky = true; // sticky 상태 시작
 
-						// round-bg-cap1 이미지가 2초 후에 나타나기 시작
+						// round-bg-cap1 이미지가 1초 후에 나타나기 시작
 						setTimeout(() => {
 							roundBgCaps[2].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
 							roundBgCaps[2].style.opacity = 1; // 투명도를 1로 변경
@@ -460,19 +566,19 @@
 								sec.style.transition = "opacity 1s ease-in-out";
 								sec.style.opacity = 1;
 							});
-						}, 1200); // 1.2초 뒤에 나타나기 시작
+						}, 800); // 1.2초 뒤에 나타나기 시작
 
 						// round-bg-cap2 이미지가 round-bg-cap1의 투명도 변화 완료 후 1초 뒤에 나타나기 시작
 						setTimeout(() => {
 							roundBgCaps[1].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
 							roundBgCaps[1].style.opacity = 1; // 투명도를 1로 변경
-						}, 1600); // round-bg-cap1의 투명도 변화 후 1초 뒤
+						}, 1100); // round-bg-cap1의 투명도 변화 후 1초 뒤
 
 						// round-bg-cap3 이미지가 round-bg-cap2의 투명도 변화 완료 후 1초 뒤에 나타나기 시작
 						setTimeout(() => {
 							roundBgCaps[0].style.transition = "opacity 1s ease-in-out"; // 부드러운 전환 효과 추가
 							roundBgCaps[0].style.opacity = 1; // 투명도를 1로 변경
-						}, 2000); // round-bg-cap2의 투명도 변화 후 1초 뒤
+						}, 1300); // round-bg-cap2의 투명도 변화 후 1초 뒤
 					}
 
 					// round-al-wrap이 중앙에 도달하면 .txt 요소들의 opacity를 0으로 변경
@@ -515,6 +621,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const txt2 = document.querySelector(".txt-wrap .txt2");
+    const contSection = document.querySelector(".cont-section"); // cont-section 요소 선택
     const roundWraps = [
       { element: document.querySelector(".round-wrap1"), text: "Building Personal Capability" },
       { element: document.querySelector(".round-wrap2"), text: "Impacting Organizational Capability" },
@@ -522,51 +629,46 @@
       { element: document.querySelector(".round-wrap4"), text: "Developing Professional Capability" },
     ];
 
-    let lastScrollY = window.scrollY; // 마지막 스크롤 위치 저장
+    let currentText = "Capability Model"; // 현재 표시된 텍스트를 추적
+    let isAnimating = false; // 애니메이션 중인지 확인하는 플래그
+
+    // 텍스트 변경 함수 (페이드 효과 포함)
+    const changeTextWithFade = (newText) => {
+      if (currentText === newText || isAnimating) return; // 동일한 텍스트로 변경하지 않음, 애니메이션 중일 때도 실행하지 않음
+
+      isAnimating = true; // 애니메이션 시작
+      // Fade-out 효과
+      txt2.style.transition = "opacity 0.5s ease-out";
+      txt2.style.opacity = 0;
+
+      // 텍스트 변경 후 Fade-in 효과
+      setTimeout(() => {
+        txt2.textContent = newText;
+        txt2.style.transition = "opacity 0.5s ease-in";
+        txt2.style.opacity = 1;
+
+        setTimeout(() => {
+          isAnimating = false; // 애니메이션 종료
+          currentText = newText; // 현재 텍스트 업데이트
+        }, 500); // Fade-in 완료 후 플래그 해제
+      }, 500); // Fade-out 완료 후 텍스트 변경
+    };
 
     // Intersection Observer 설정
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const currentScrollY = window.scrollY; // 현재 스크롤 위치
-          const isScrollingDown = currentScrollY > lastScrollY; // 스크롤 방향 확인
-
           if (entry.isIntersecting) {
-            const targetWrap = roundWraps.find((wrap) => wrap.element === entry.target);
-            if (targetWrap) {
-              // Fade-out 효과
-              txt2.style.transition = "opacity 0.5s ease-out";
-              txt2.style.opacity = 0;
-
-              // 텍스트 변경 후 Fade-in 효과
-              setTimeout(() => {
-                txt2.textContent = targetWrap.text;
-                txt2.style.transition = "opacity 0.5s ease-in";
-                txt2.style.opacity = 1;
-              }, 500); // Fade-out 완료 후 텍스트 변경
-            }
-          } else {
-            // 요소가 뷰포트를 벗어날 때 처리 (스크롤 업)
-            if (!isScrollingDown) {
-              const previousWrapIndex = roundWraps.findIndex((wrap) => wrap.element === entry.target) - 1;
-              if (previousWrapIndex >= 0) {
-                const previousWrap = roundWraps[previousWrapIndex];
-
-                // Fade-out 효과
-                txt2.style.transition = "opacity 0.5s ease-out";
-                txt2.style.opacity = 0;
-
-                // 텍스트 변경 후 Fade-in 효과
-                setTimeout(() => {
-                  txt2.textContent = previousWrap.text;
-                  txt2.style.transition = "opacity 0.5s ease-in";
-                  txt2.style.opacity = 1;
-                }, 500); // Fade-out 완료 후 텍스트 변경
+            // cont-section이 뷰포트에 처음 들어왔을 때 'Capability Model'로 설정
+            if (entry.target === contSection) {
+              changeTextWithFade("Capability Model");
+            } else {
+              const targetWrap = roundWraps.find((wrap) => wrap.element === entry.target);
+              if (targetWrap) {
+                changeTextWithFade(targetWrap.text);
               }
             }
           }
-
-          lastScrollY = currentScrollY; // 마지막 스크롤 위치 업데이트
         });
       },
       {
@@ -575,8 +677,18 @@
       }
     );
 
-    // 각 round-wrap 요소를 관찰
+    // 각 round-wrap 요소와 cont-section을 관찰
+    observer.observe(contSection);
     roundWraps.forEach((wrap) => observer.observe(wrap.element));
+
+    // 스크롤 이벤트 추가: 최상단에 도달했을 때 기본 텍스트로 변경
+    window.addEventListener("scroll", () => {
+      const contSectionTop = contSection.getBoundingClientRect().top;
+
+      if (contSectionTop >= 0) {
+        changeTextWithFade("Capability Model");
+      }
+    });
   });
 </script>
 
