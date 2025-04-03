@@ -20,7 +20,6 @@
 
 	<script src="/js/common/common_util.js"></script>
 	<script src="/js/common.js"></script>
-	<script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
 
 
 
@@ -185,111 +184,6 @@
 				Capability Model
 			</div>
 		</div>
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-				const txt2 = document.querySelector(".txt-wrap .txt2");
-				const contSection = document.querySelector(".cont-section"); // cont-section 요소 선택
-				const roundWraps = [
-					{ element: document.querySelector(".round-wrap1"), text: "Building Personal Capability" },
-					{ element: document.querySelector(".round-wrap2"), text: "Impacting Organizational Capability" },
-					{ element: document.querySelector(".round-wrap3"), text: "Developing Specialized Capability" },
-					{ element: document.querySelector(".round-wrap4"), text: "Developing Professional Capability" },
-				];
-	
-				let lastScrollY = window.scrollY; // 마지막 스크롤 위치 저장
-				let isScrolling = false; // 스크롤 이벤트 최적화를 위한 플래그
-				let currentText = "Capability Model"; // 현재 표시된 텍스트를 추적
-	
-				// Intersection Observer 설정
-				const observer = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							const currentScrollY = window.scrollY; // 현재 스크롤 위치
-							const isScrollingDown = currentScrollY > lastScrollY; // 스크롤 방향 확인
-	
-							if (entry.isIntersecting) {
-								const targetWrap = roundWraps.find((wrap) => wrap.element === entry.target);
-								if (targetWrap && currentText !== targetWrap.text) {
-									// 텍스트가 이미 표시된 경우 변경하지 않음
-									currentText = targetWrap.text;
-	
-									// Fade-out 효과
-									txt2.style.transition = "opacity 0.5s ease-out";
-									txt2.style.opacity = 0;
-	
-									// 텍스트 변경 후 Fade-in 효과
-									setTimeout(() => {
-										txt2.textContent = targetWrap.text;
-										txt2.style.transition = "opacity 0.5s ease-in";
-										txt2.style.opacity = 1;
-									}, 500); // Fade-out 완료 후 텍스트 변경
-								}
-							} else {
-								// 요소가 뷰포트를 벗어날 때 처리 (스크롤 업)
-								if (!isScrollingDown) {
-									const previousWrapIndex = roundWraps.findIndex((wrap) => wrap.element === entry.target) - 1;
-									if (previousWrapIndex >= 0) {
-										const previousWrap = roundWraps[previousWrapIndex];
-										if (currentText !== previousWrap.text) {
-											// 텍스트가 이미 표시된 경우 변경하지 않음
-											currentText = previousWrap.text;
-	
-											// Fade-out 효과
-											txt2.style.transition = "opacity 0.5s ease-out";
-											txt2.style.opacity = 0;
-	
-											// 텍스트 변경 후 Fade-in 효과
-											setTimeout(() => {
-												txt2.textContent = previousWrap.text;
-												txt2.style.transition = "opacity 0.5s ease-in";
-												txt2.style.opacity = 1;
-											}, 500); // Fade-out 완료 후 텍스트 변경
-										}
-									}
-								}
-							}
-	
-							lastScrollY = currentScrollY; // 마지막 스크롤 위치 업데이트
-						});
-					},
-					{
-						root: null, // 뷰포트를 기준으로 관찰
-						threshold: 0.5, // 요소가 뷰포트의 절반 이상 보일 때 트리거
-					}
-				);
-	
-				// 각 round-wrap 요소를 관찰
-				roundWraps.forEach((wrap) => observer.observe(wrap.element));
-	
-				// 스크롤 이벤트 추가: 최상단에 도달했을 때 기본 텍스트로 변경
-				window.addEventListener("scroll", () => {
-					if (!isScrolling) {
-						isScrolling = true;
-						requestAnimationFrame(() => {
-							const contSectionTop = contSection.getBoundingClientRect().top;
-	
-							if (contSectionTop >= 0 && currentText !== "Capability Model") {
-								// 텍스트가 이미 'Capability Model'인 경우 변경하지 않음
-								currentText = "Capability Model";
-	
-								// Fade-out 효과
-								txt2.style.transition = "opacity 0.5s ease-out";
-								txt2.style.opacity = 0;
-	
-								// 텍스트 변경 후 Fade-in 효과
-								setTimeout(() => {
-									txt2.textContent = "Capability Model";
-									txt2.style.transition = "opacity 0.5s ease-in";
-									txt2.style.opacity = 1;
-								}, 500); // Fade-out 완료 후 텍스트 변경
-							}
-	
-							isScrolling = false; // 스크롤 처리 완료
-						});
-					}
-				});
-			});
-		</script>
 	</section>
 
 
@@ -374,7 +268,7 @@
 	</section>
 
 	<!-- 조직역량 -->
-	<section id="people" class="conference-section p100">
+	<section class="conference-section p100">
 		<div class="common-cont-area">
 			<div class="comm-tit-box">
 				<h3 class="comm-tit">
@@ -409,6 +303,731 @@
 			<div id="moreBtnArea_eduNorList" class="btnarea" style="display:none;">
 				<button type="button" class="btn small" id="moreBtn_eduNorList"
 					onclick="fnEduSbjctSrch('M', 'N');">더보기<i class="icon-more"></i></button>
+			</div>
+		</div>
+	</section>
+
+	<!-- 강사진 -->
+	<section id="people">
+		<div class="common-cont-area">
+			<div class="comm-tit-box">
+				<h3 class="comm-tit">PEOPLE</h3>
+			</div>
+			<div class="comm-sticky">
+				<a href="#prof">KMA 교수진</a>
+				<a href="#personal">개인역량</a>
+				<a href="#org">조직역량</a>
+				<a href="#spec">특화역량</a>
+				<a href="#profn">전문역량</a>
+			</div>
+			<div class="prof-wrap">
+				<p id="prof" class="kind-ti">KMA 교수진</p>
+				<ul  class="kind">
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof1.png');"></div>
+						<div class="right">
+							<p class="nm">김경영</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof2.png');"></div>
+						<div class="right">
+							<p class="nm">김선영</p>
+							<p class="team">한국능률협회 전임교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof3.png');"></div>
+						<div class="right">
+							<p class="nm">김영원</p>
+							<p class="team">효성그룹 연수원장 상무</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof4.png');"></div>
+						<div class="right">
+							<p class="nm">김현해</p>
+							<p class="team">한국능률협회 전임교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof5.png'); background-size: 120%;"></div>
+						<div class="right">
+							<p class="nm">박도영</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof6.png');"></div>
+						<div class="right">
+							<p class="nm">소광</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof7.png');"></div>
+						<div class="right">
+							<p class="nm">송영숙</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof8.png');"></div>
+						<div class="right">
+							<p class="nm">신현숙</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof9.png');"></div>
+						<div class="right">
+							<p class="nm">유선명</p>
+							<p class="team">한국능률협회 전임교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof10.png');"></div>
+						<div class="right">
+							<p class="nm">윤재호</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof11.png');"></div>
+						<div class="right">
+							<p class="nm">이영훈</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof12.png');"></div>
+						<div class="right">
+							<p class="nm">이유나</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_prof13.png');"></div>
+						<div class="right">
+							<p class="nm">최근호</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+				</ul>
+
+				<p id="personal" class="kind-ti">개인역량</p>
+				<ul class="kind">
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal1.png');"></div>
+						<div class="right">
+							<p class="nm">강관수</p>
+							<p class="team">한국조직관리연구소 소장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal2.png');"></div>
+						<div class="right">
+							<p class="nm">구기모</p>
+							<p class="team">스마트스토리 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal3.png');"></div>
+						<div class="right">
+							<p class="nm">김영기</p>
+							<p class="team">고려대학교 경영대학원 강의교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal4.png');"></div>
+						<div class="right">
+							<p class="nm">김용모</p>
+							<p class="team">한진그룹 인력개발팀장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal5.png');"></div>
+						<div class="right">
+							<p class="nm">박재현</p>
+							<p class="team">딥택트러닝 주식회사 콘텐츠연구소 소장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal6.png');"></div>
+						<div class="right">
+							<p class="nm">박조은</p>
+							<p class="team">사이언스 유튜브 채널 &lt;오늘코드&gt; 운영</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal7.png');"></div>
+						<div class="right">
+							<p class="nm">박준엽</p>
+							<p class="team">J&amp;A 파트너스 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal8.png');"></div>
+						<div class="right">
+							<p class="nm">배용관</p>
+							<p class="team">개신대학원대학교 코칭학 겸임교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal9.png');"></div>
+						<div class="right">
+							<p class="nm">손정연</p>
+							<p class="team">한국능률협회 심리코칭 파트너</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal10.png');"></div>
+						<div class="right">
+							<p class="nm">이문원</p>
+							<p class="team">에이치앤씨컴퍼니 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal11.png');"></div>
+						<div class="right">
+							<p class="nm">이윤희</p>
+							<p class="team">비즈스피치 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal12.png');"></div>
+						<div class="right">
+							<p class="nm">이정훈</p>
+							<p class="team">현대중공업 엔진기계사업기획부서장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_personal13.png');"></div>
+						<div class="right">
+							<p class="nm">홍승지</p>
+							<p class="team">한국코치협회 인증 KPC</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+				</ul>
+
+				<p id="org" class="kind-ti">조직역량</p>
+				<ul class="kind">
+					<li>
+						<div class="left" style="background-image: url('/images/img_org1.png');"></div>
+						<div class="right">
+							<p class="nm">강신정</p>
+							<p class="team">이지스토리 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org2.png');"></div>
+						<div class="right">
+							<p class="nm">김영진</p>
+							<p class="team">밸로웍스컨설팅 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org3.png');"></div>
+						<div class="right">
+							<p class="nm">김우현</p>
+							<p class="team">앤써리너스 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org4.png');"></div>
+						<div class="right">
+							<p class="nm">김은정</p>
+							<p class="team">긍정에너지 발전소 소장 KFA</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org5.png');"></div>
+						<div class="right">
+							<p class="nm">김현아</p>
+							<p class="team">IT 전문 강사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org6.png');"></div>
+						<div class="right">
+							<p class="nm">사경환</p>
+							<p class="team">밸류애드 대표이사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org7.png');"></div>
+						<div class="right">
+							<p class="nm">서광민</p>
+							<p class="team">루키스 T지킴이사업본부 이사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org8.png');"></div>
+						<div class="right">
+							<p class="nm">송원상</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org9.png');"></div>
+						<div class="right">
+							<p class="nm">신도용</p>
+							<p class="team">와이드코어 대표이사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org10.png');"></div>
+						<div class="right">
+							<p class="nm">우성수</p>
+							<p class="team">맥그로우컨설팅그룹 연구소장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org11.png');"></div>
+						<div class="right">
+							<p class="nm">윤희준</p>
+							<p class="team">공인노무사 희망인사노무연구소 소장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org12.png');"></div>
+						<div class="right">
+							<p class="nm">이건호</p>
+							<p class="team">혁신연구소 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org13.png');"></div>
+						<div class="right">
+							<p class="nm">전장섭</p>
+							<p class="team">POP Consulting 수석전문위원</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org14.png');"></div>
+						<div class="right">
+							<p class="nm">최광호</p>
+							<p class="team">한양공학대학원 프로젝트관리학과 겸임교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org15.png');"></div>
+						<div class="right">
+							<p class="nm">최천규</p>
+							<p class="team">에이디데이터랩 공동대표이사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_org16.png');"></div>
+						<div class="right">
+							<p class="nm">탁제운</p>
+							<p class="team">한국코치협회, 한국프로코치 KPC</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+				</ul>
+
+				<p id="spec" class="kind-ti">특화역량</p>
+				<ul class="kind">
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec1.png');"></div>
+						<div class="right">
+							<p class="nm">김상영</p>
+							<p class="team">Team Notion HRD 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec2.png');"></div>
+						<div class="right">
+							<p class="nm">김지원</p>
+							<p class="team">스코프랩스 PO</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec3.png');"></div>
+						<div class="right">
+							<p class="nm">김지훈</p>
+							<p class="team">파워포인트전문가클럽 이사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec4.png');"></div>
+						<div class="right">
+							<p class="nm">김찬호</p>
+							<p class="team">세일즈 &amp; 마케팅 전문강사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec5.png');"></div>
+						<div class="right">
+							<p class="nm">도영태</p>
+							<p class="team">롯데그룹 인재개발원 HR기획1팀장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec6.png');"></div>
+						<div class="right">
+							<p class="nm">박주일</p>
+							<p class="team">한국능률협회 교수실장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec7.png');"></div>
+						<div class="right">
+							<p class="nm">박현정</p>
+							<p class="team">Deeptact Learning 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec8.png');"></div>
+						<div class="right">
+							<p class="nm">석정훈</p>
+							<p class="team">이디스크코리아 실장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec9.png');"></div>
+						<div class="right">
+							<p class="nm">송만섭</p>
+							<p class="team">국방대학교 안전보장학 석사학위 취득</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec10.png');"></div>
+						<div class="right">
+							<p class="nm">이미란</p>
+							<p class="team">한국능률협회 교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec11.png');"></div>
+						<div class="right">
+							<p class="nm">이선환</p>
+							<p class="team">정신건강의학과 전문의</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec12.png');"></div>
+						<div class="right">
+							<p class="nm">이현숙</p>
+							<p class="team">덕성여대 웰빙건강심리센터 부센터장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec13.png');"></div>
+						<div class="right">
+							<p class="nm">임원범</p>
+							<p class="team">강북구청소년상담복지센터 팀장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_spec14.png');"></div>
+						<div class="right">
+							<p class="nm">정남진</p>
+							<p class="team">K-Coaching Group 자격취득센터장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+				</ul>
+
+				<p id="profn" class="kind-ti">전문역량</p>
+				<ul class="kind">
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn1.png');"></div>
+						<div class="right">
+							<p class="nm">강다현</p>
+							<p class="team">디앤에이치 글로벌 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn2.png');"></div>
+						<div class="right">
+							<p class="nm">김시용</p>
+							<p class="team">국제특허법률사무소</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn3.png');"></div>
+						<div class="right">
+							<p class="nm">김호성</p>
+							<p class="team">수원과학대학교 초빙교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn4.png');"></div>
+						<div class="right">
+							<p class="nm">남재철</p>
+							<p class="team">대림대 겸임교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn5.png');"></div>
+						<div class="right">
+							<p class="nm">박노일</p>
+							<p class="team">차의과학대 미래전략실</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn6.png');"></div>
+						<div class="right">
+							<p class="nm">박혜화</p>
+							<p class="team">위앤미교육연구소 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn7.png');"></div>
+						<div class="right">
+							<p class="nm">백진호</p>
+							<p class="team">B2B세일즈컨설팅 / 대표 컨설턴트</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn8.png');"></div>
+						<div class="right">
+							<p class="nm">백희원</p>
+							<p class="team">미앤미교육컨설팅 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn9.png');"></div>
+						<div class="right">
+							<p class="nm">서진원</p>
+							<p class="team">와이컨텐츠 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn10.png');"></div>
+						<div class="right">
+							<p class="nm">성수용</p>
+							<p class="team">한국금융연수원 파견교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn11.png');"></div>
+						<div class="right">
+							<p class="nm">신다혜</p>
+							<p class="team">삼일회계법인 GTS 본부 관세팀</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn12.png');"></div>
+						<div class="right">
+							<p class="nm">신현억</p>
+							<p class="team">한국능률협회 상임교수</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn13.png');"></div>
+						<div class="right">
+							<p class="nm">오세란</p>
+							<p class="team">아람에미레이트항공 객실승무원</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn14.png');"></div>
+						<div class="right">
+							<p class="nm">오시학</p>
+							<p class="team">국제무역컨설팅 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn15.png');"></div>
+						<div class="right">
+							<p class="nm">유재웅</p>
+							<p class="team">을지대학교 홍보디</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn16.png');"></div>
+						<div class="right">
+							<p class="nm">윤영광</p>
+							<p class="team">現 한우리노동법률컨설팅 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn17.png');"></div>
+						<div class="right">
+							<p class="nm">윤용덕</p>
+							<p class="team">와이앤에스 법률사무소 변호사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn18.png');"></div>
+						<div class="right">
+							<p class="nm">이충호</p>
+							<p class="team">비아이경영컨설팅 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn19.png');"></div>
+						<div class="right">
+							<p class="nm">전경옥</p>
+							<p class="team">미리캔버스 대표강사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn20.png');"></div>
+						<div class="right">
+							<p class="nm">정문기</p>
+							<p class="team">한국강연협회장 액션에듀 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn21.png');"></div>
+						<div class="right">
+							<p class="nm">정승균</p>
+							<p class="team">세무회계사무소 대표 세무사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn22.png');"></div>
+						<div class="right">
+							<p class="nm">정종구</p>
+							<p class="team">세무회계사무소 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn23.png');"></div>
+						<div class="right">
+							<p class="nm">정하린</p>
+							<p class="team">CS교육연구소 소장(대표)</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn24.png');"></div>
+						<div class="right">
+							<p class="nm">최광종</p>
+							<p class="team">찬란한컴퍼니 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn25.png');"></div>
+						<div class="right">
+							<p class="nm">최병훈</p>
+							<p class="team">KOTRA 스톡홀름무역관장</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn26.png');"></div>
+						<div class="right">
+							<p class="nm">최재윤</p>
+							<p class="team">세무법인 리젠 이사 (세무사)</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn27.png');"></div>
+						<div class="right">
+							<p class="nm">케빈경</p>
+							<p class="team">ECG 에듀케이션 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn28.png');"></div>
+						<div class="right">
+							<p class="nm">함용일</p>
+							<p class="team">노무법인 위맥 대표 공인노무사</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn29.png');"></div>
+						<div class="right">
+							<p class="nm">홍용준</p>
+							<p class="team">제안 컨설팅 전문가그룹 TNC LAB 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+					<li>
+						<div class="left" style="background-image: url('/images/img_profn30.png');"></div>
+						<div class="right">
+							<p class="nm">황은영</p>
+							<p class="team">GnG 이미지스쿨 대표</p>
+							<button class="more">세부 정보</button>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</section>

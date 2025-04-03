@@ -60,7 +60,9 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 .main-section .visual-sec .arrow-box { position: relative; width: 80px; height: 50px; } 
 /* Swiper 불릿 기본 스타일 */
 .main-section .swiper-pagination-bullet { position: relative; margin: 0 !important; width: 100% !important; height: fit-content !important; text-align: left; border-radius: 0 !important; opacity: 1; background-color: transparent !important; } 
-.main-section .swiper-pagination-bullet em { display: inline-block; width: 100%; margin-bottom: 15px; font-size: 16px; font-style: normal; line-height: 19.2px; font-weight: bold; letter-spacing: -0.32px; color: rgba(255, 255, 255, 0.6); word-break: keep-all; } 
+.main-section .swiper-pagination-bullet em { display: inline-block; width: 100%; margin-bottom: 15px; font-size: 16px; font-style: normal; line-height: 19.2px; font-weight: bold; letter-spacing: -0.32px; color: rgba(255, 255, 255, 0.6); word-break: keep-all; display:block;} 
+.main-section .swiper-pagination-bullet i {display: block;}
+.main-section .swiper-pagination-bullet b {display: block}
 .main-section .swiper-pagination-bullet.swiper-pagination-bullet-active em { color: rgba(255, 255, 255, 1); } 
 .main-section .swiper-pagination-bullet i { position: absolute; bottom: 0; left: 0; z-index: 1; width: 100%; height: 3px; background-color: rgba(217, 217, 217, 0.3); /* 프로그레스 바 배경 */ } 
 .main-section .swiper-pagination-bullet b { position: absolute; bottom: 0; left: 0; z-index: 2; width: 0%; height: 3px; background-color: #fff; /* 프로그레스 바 채워지는 부분 */ } 
@@ -134,6 +136,19 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 .cont-section .round-al-wrap .round-al { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 16vw; height: 16vw; max-width: 250px; max-height: 250px; min-width: 100px; min-height: 100px; background: #fff; border-radius: 100%; display: flex; justify-content: center; align-items: center; text-align: center; font-size: clamp(14px, 2vw, 26px); font-weight: 600; line-height: clamp(20px, 3vw, 37px); letter-spacing: -1.68px; box-shadow: 0px 3px 100px 0px rgba(0, 0, 0, 0.15);}
 
 
+/* 강사진 */
+#people .comm-sticky {position: relative; width: 100%; height: auto; display: flex; gap: 44px;}
+#people .comm-sticky a {font-size: 22px; font-weight: 600; line-height: 24px; letter-spacing: -1.4px; color: #767676;}
+#people .prof-wrap {position: relative; width: 100%; height: auto;}
+#people .prof-wrap .kind-ti {position: relative; width: 100%; padding: 65px 0 54px; font-size: 28px; font-weight: 600; line-height: 24px; letter-spacing: -1.68px; text-align: center;}
+#people .prof-wrap .kind {position: relative; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 27px;}
+#people .prof-wrap .kind li {height: 158px; border: 1px solid #c7c7c7; border-radius: 14px; display: flex; gap: 20px; overflow: hidden;}
+#people .prof-wrap .kind li .left {width: auto; min-width: 158px; background-position: top; background-repeat: no-repeat; background-size: 130%;}
+#people .prof-wrap .kind li .right {position: relative; display: grid; align-content: center; }
+#people .prof-wrap .kind li .right .nm {font-size: 22px; font-weight: 600; line-height: 25px; letter-spacing: 2px;}
+#people .prof-wrap .kind li .right .team {font-size: 18px; font-weight: 400; line-height: 18px; letter-spacing: -1px; color: #777; margin-top: 10px;}
+#people .prof-wrap .kind li .right .more {width: 115px; height: 34px; font-size: 15px; font-weight: 700; line-height: 18px; letter-spacing: -0.5px; color: #565656; display: flex; justify-content: center; align-items: center; border: 1px solid #a6a6a6; border-radius: 6px; background: #fff; cursor: pointer; margin-top: 22px; transition: all .3s;}
+#people .prof-wrap .kind li .right .more:hover {background: #282828; color: #fff;}
 
 /* ****************** 컨퍼런스 해외연수, 글로벌 컨퍼런스 (더보기) ********************** */
 .product-list > ul { display: flex; gap: 26.7px; flex-wrap: wrap; } 
@@ -349,6 +364,10 @@ header { height: auto; padding: 11px 0; border-bottom: none; }
 .main-section .visual-sec .swiper-pagination { flex-direction: row; gap: 8px; } 
 .main-section .swiper-pagination-bullet { width: 8px !important; height: 8px !important; background-color: #d9d9d9 !important; border-radius: 100% !important; } 
 .main-section .swiper-pagination-bullet-active { background-color: #54bcb0 !important; } 
+
+.main-section .swiper-pagination-bullet em {display: none;}
+.main-section .swiper-pagination-bullet i {display: none;}
+.main-section .swiper-pagination-bullet b {display: none;}
 
 /* ****************** banner-section ********************** */
 .banner-section { padding: 33.5px 0; } 
