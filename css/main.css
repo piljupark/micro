@@ -139,7 +139,10 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 /* 강사진 */
 #people .common-cont-area { width: 100%; } 
 #people .common-cont-area .comm-tit-box { width: 100%; max-width: 1200px; margin: 0 auto; } 
-#people .comm-sticky { position: relative; width: 100%; max-width: 1200px; height: auto; margin: 80px auto 0; padding-bottom: 30px; display: flex; justify-content: space-between; gap: 100px; align-items: center; } 
+#people .comm-sticky { position: relative; width: 100%; max-width: 1200px; height: auto; margin: 80px auto 0; padding-bottom: 30px;  } 
+#people .comm-sticky .comm-sticky-inner {width: 100%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; gap: 100px; align-items: center;}
+#people .comm-sticky.fixed {width: 100%; max-width: unset; margin: 0; padding: 15px 0; background: #fff;}
+#people .comm-sticky.fixed .comm-sticky-inner {width: 100%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; gap: 100px; align-items: center;}
 #people .comm-sticky .s-left { display: flex; gap: 44px; } 
 #people .comm-sticky .s-left a { font-size: 22px; font-weight: 600; line-height: 24px; letter-spacing: -1.4px; color: #767676; } 
 #people .comm-sticky .prof-search { position: relative; width: auto; min-width: 500px; padding: 13px 19px 13px 60px; border-radius: 40px; border: 1px solid #7a7a7a; font-size: 20px; color: #777; font-weight: 400; line-height: 20px; letter-spacing: -1.2px; background-image: url('/images/icon_search.svg'); background-position: 5px center; background-repeat: no-repeat; background-size: 50px; outline: none; } 
@@ -154,19 +157,20 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 #people .prof-wrap .kind li .right .more { width: 115px; height: 34px; font-size: 15px; font-weight: 700; line-height: 18px; letter-spacing: -0.5px; color: #565656; display: flex; justify-content: center; align-items: center; border: 1px solid #a6a6a6; border-radius: 6px; background: #fff; cursor: pointer; margin-top: 22px; transition: all .3s; } 
 #people .prof-wrap .kind li .right .more:hover { background: #282828; color: #fff; } 
 
-#people .prof-wrap #no-result-message { font-size: 24px; color: #000; font-weight: 500; line-height: 24px; letter-spacing: -1.68px; } 
+#people .prof-wrap #no-result-message { padding-top: 60px; font-size: 24px; color: #000; font-weight: 500; line-height: 24px; letter-spacing: -1.68px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px;} 
+#people .prof-wrap #no-result-message span {font-size: 20px; line-height: 24px; color: #cacaca; letter-spacing: -1.68px;}
 
-/* 강사 정보 모달 */
+/* ****************** 강사 정보 모달 ****************** */
 #people .prof-wrap .modal-overlay{display:flex; justify-content:center; align-items:center; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); z-index:1000;display:none; }
 
 #people .prof-wrap .modal{display:flex;flex-direction:column;justify-content:center;align-items:center;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:auto;background-color:#fff;border-radius:20px;z-index:1001;display:none; padding: 30px 40px 60px;overflow:auto}
 
-#people .prof-wrap .modal .md-nm {position: relative; width: 100%; font-size: 28px; font-weight: 700; line-height: 28px; letter-spacing: 2px; color: #000; padding: 26px 20px; box-sizing: border-box; border-bottom: 1px solid rgba(0,0,0,0.1);}
+#people .prof-wrap .modal .md-nm {position: relative; width: 100%; font-size: 28px; font-weight: 700; line-height: 28px; letter-spacing: 2px; color: #000; padding: 34px 20px 26px; box-sizing: border-box; border-bottom: 1px solid rgba(0,0,0,0.1);}
 #people .prof-wrap .modal .md-item-ti {position: relative; width: 100%; font-size: 18px; font-weight: 700; color: rgba(0,0,0,0.3); line-height: 20px; margin-top: 45px; padding: 0 20px; box-sizing: border;}
 #people .prof-wrap .modal .md-item-ti:nth-child(1) {margin-top: 26px;} 
 #people .prof-wrap .modal .md-item-txt {position: relative; width: 100%; font-size: 16px; font-weight: 300; line-height: 28px; letter-spacing: -1px; color: #131313; margin-top: 13px; padding: 0 20px; box-sizing: border-box;}
 
-#people .prof-wrap .modal-close{position:absolute;top:10px;right:10px;background:none;border:none;font-size:20px;cursor:pointer}
+#people .prof-wrap .modal-close{position:absolute; top:14px; right:40px; background:none; border:none; font-size: 60px; font-weight: 300; cursor:pointer; z-index: 2;}
 
 /* ****************** 컨퍼런스 해외연수, 글로벌 컨퍼런스 (더보기) ********************** */
 .product-list > ul { display: flex; gap: 26.7px; flex-wrap: wrap; } 
@@ -429,6 +433,13 @@ header { height: auto; padding: 11px 0; border-bottom: none; }
 .regular-swiper .swiper-slide .price-area .price { line-height: 8px; font-size: 8px; } 
 .regular-swiper .swiper-slide .price-area .price strong { font-size: 14px; line-height: 14px; } 
 
+/* ****************** 강사진 ********************** */
+#people .comm-sticky.fixed {top: 45px !important; left: 0; padding: 15px 20px; box-sizing: border-box;}
+#people .comm-sticky .comm-sticky-inner {gap: unset;}
+#people .comm-sticky .comm-sticky-inner .s-left {gap: 20px;}
+#people .comm-sticky .comm-sticky-inner .s-left a {font-size: 18px;}
+#people .comm-sticky .comm-sticky-inner .prof-search {width: 30%; max-width: 500px; min-width: unset; font-size: 16px;}
+
 /* ****************** banner-bg-section ********************** */
 .banner-bg-section { height: 240px; background: url(/images/bg_banner_bg_section_mo.jpg) no-repeat; background-size: cover; } 
 .banner-bg-section .banner-inner { flex-direction: column; gap: 20px; } 
@@ -453,6 +464,12 @@ footer .site-link-wrap { margin: 65px 0 0; }
 footer .site-link-wrap a { padding-right: 15px; margin-right: 15px; font-size: 12px; line-height: 12px; letter-spacing: normal; } 
 }
 
+
+@media screen and (max-width: 1024px) {
+    /* 강사진 */
+    #people .prof-wrap .kind {grid-template-columns: repeat(2, 1fr);}
+ }
+
 @media screen and (max-width: 960px) { 
 /* ****************** banner-section ********************** */
 .banner-section .banner-swiper .swiper-slide:nth-child(1) { background: url(/images/banner_slide_bg_mo_hrd.webp) no-repeat center center / cover; } 
@@ -466,6 +483,14 @@ footer .site-link-wrap a { padding-right: 15px; margin-right: 15px; font-size: 1
  .cont-section .txt-wrap .txt { letter-spacing: -0.68px; } 
  .cont-section .txt-wrap .txt1 { margin: 0; } 
  .cont-section .txt-wrap .txt2 { width: auto !important; min-width: unset; } 
+
+/* ****************** 강사진 ********************** */
+#people .comm-sticky .comm-sticky-inner .s-left {gap: 20px;}
+#people .comm-sticky .comm-sticky-inner .s-left a {font-size: 14px;}
+
+ 
+ #people .prof-wrap .kind {grid-template-columns: repeat(1, 1fr);}
+ #people .prof-wrap .modal {width: calc(100% - 40px);}
  
 }
 

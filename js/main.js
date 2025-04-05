@@ -28,6 +28,8 @@
         var bannerBgPosition = $('#bannerBgSec').offset().top - 300;
         var referencePosition = $('#reference').offset().top - 300;
 
+        
+
         $('.menu-item').removeClass('on');  // 모든 메뉴의 .on 제거
         
         // 📌 #program 전까지는 #mainSec이 활성화
@@ -203,7 +205,7 @@ $(document).ready(function() {
     // mobile gnb click function
     $(".mobile-menu .menu-item").on("click", function(){
         gnbClose();
-    })
+    });
 
 }); // End of the Document ready	
 
@@ -436,3 +438,5 @@ function gnbOpen() {
         right: 0
     });
 }
+
+
