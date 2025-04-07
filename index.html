@@ -3089,30 +3089,44 @@
 
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-		const stickyElement = document.querySelector(".comm-sticky");
-		const peopleSection = document.getElementById("people");
-		const stickyOffset = 100;
+			// Sticky element logic
+			const stickyElement = document.querySelector(".comm-sticky");
+			const peopleSection = document.getElementById("people");
+			const stickyOffset = 100;
 
-		window.addEventListener("scroll", () => {
-			const scrollTop = window.scrollY;
-			const peopleRect = peopleSection.getBoundingClientRect();
-			const stickyRect = stickyElement.getBoundingClientRect();
+			window.addEventListener("scroll", () => {
+					const scrollTop = window.scrollY;
+					const peopleRect = peopleSection.getBoundingClientRect();
+					const stickyRect = stickyElement.getBoundingClientRect();
 
-			if (peopleRect.top <= stickyOffset && peopleRect.bottom > stickyRect.height) {
-				stickyElement.style.position = "fixed";
-				stickyElement.style.top = `${stickyOffset}px`;
-				stickyElement.style.width = "100%";
-				stickyElement.style.zIndex = "1000";
-				stickyElement.classList.add("fixed");
-			} else {
-				stickyElement.style.position = "relative";
-				stickyElement.style.top = "unset";
-				stickyElement.style.width = "auto";
-				stickyElement.classList.remove("fixed");
-			}
-		});
+					if (peopleRect.top <= stickyOffset && peopleRect.bottom > stickyRect.height) {
+							stickyElement.style.position = "fixed";
+							stickyElement.style.top = `${stickyOffset}px`;
+							stickyElement.style.width = "100%";
+							stickyElement.style.zIndex = "1000";
+							stickyElement.classList.add("fixed");
+					} else {
+							stickyElement.style.position = "relative";
+							stickyElement.style.top = "unset";
+							stickyElement.style.width = "auto";
+							stickyElement.classList.remove("fixed");
+					}
+			});
+
+			// Change color of clicked link
+			const links = document.querySelectorAll(".s-left a");
+
+			links.forEach(link => {
+					link.addEventListener("click", (e) => {
+							// Remove active class from all links
+							links.forEach(l => l.classList.remove("active"));
+							// Add active class to the clicked link
+							link.classList.add("active");
+					});
+			});
 	});
 </script>
+
 </body>
 
 </html>
