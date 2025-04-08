@@ -91,7 +91,7 @@ $(document).ready(function() {
     var isTablet = window.innerWidth <= 1024;
 
     // Swiper :: .main-swiper
-    var listArray = ["[9월] IFA 2024 & ESG 한국대표단", "[9월] HR Technology Espo 2024 한국대표단", "[10월] ATD-APC 2024 한국대표단"];
+    var listArray = ["HRD 컨설팅 서비스", "기업 교육 솔루션", "트렌드M"];
     var mainSwiper = new Swiper('.main-swiper', {
         effect: 'fade',
         autoplay: { // 자동 재생
@@ -160,6 +160,23 @@ $(document).ready(function() {
         },
     });
 
+     //Swiper :: .spc-swiper
+     var regularSwiper = new Swiper('.spc-swiper', {
+        slidesPerView: 2,
+        spaceBetween: 14, //슬라이드 사이 간격
+        navigation: {
+            nextEl: '.spc-swiper .navi-wrap .swiper-button-next',
+            prevEl: '.spc-swiper .navi-wrap .swiper-button-prev',
+        },
+        breakpoints: {
+            1280: { // 브라우저 >= 1280
+              slidesPerView: 4,  
+              spaceBetween: 26.7   
+            },
+            
+        },
+    });
+
     // Slick :: #review
     reviewCon = $('.main-review-list');
     var reviewItemLength = reviewCon.find('.list-item').length;
@@ -211,10 +228,9 @@ $(document).ready(function() {
 
 //메인슬라이드 링크 연결
 function goDtlPg(index){
-    var url_Main = index == 1 ? 'https://kma.or.kr/usrs/eduRegMgnt/eduRegInfoDetailForm.do?p_edutype_cd=undefined&p_crscd=&p_crsseq_id=121416&p_view_type=S&p_ctgry_id=&CRSCD=&CRSSEQ_ID=121416&p_hmpgcd=30&mkey=36394' :
-    				// index == 2 ? 'https://kma.or.kr/usrs/eduRegMgnt/eduRegInfoDetailForm.do?p_edutype_cd=002&p_crscd=&p_crsseq_id=121004&p_view_type=S&p_ctgry_id=&CRSCD=&CRSSEQ_ID=121004&p_hmpgcd=30&mkey=36394' :
-                    index == 3 ? 'https://kma.or.kr/usrs/eduRegMgnt/eduRegInfoDetailForm.do?p_edutype_cd=undefined&p_crscd=&p_crsseq_id=121421&p_view_type=S&p_ctgry_id=&CRSCD=&CRSSEQ_ID=121421&p_hmpgcd=30&mkey=36394' :
-                    index == 4 ? 'https://kma.or.kr/usrs/eduRegMgnt/eduRegInfoDetailForm.do?p_edutype_cd=undefined&p_crscd=&p_crsseq_id=121417&p_view_type=S&p_ctgry_id=&CRSCD=&CRSSEQ_ID=121417&p_hmpgcd=30&mkey=36394' :
+    var url_Main = index == 1 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=32&cateNm=srvCnstEdu' :
+    				index == 2 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=35&cateNm=srvEduCmp' :
+                    index == 3 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=10&cateNm=spcTrendM' :
                     "";
     if(url_Main){
         window.open(url_Main, "_blank");
