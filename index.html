@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="/css/swiper/swiper-bundle.min.css">
 	<link rel="stylesheet" href="/css/swiper/swiper.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/slick/slick.css">
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 	<!-- JS -->
 	<script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
@@ -21,8 +20,6 @@
 
 	<script src="/js/common/common_util.js"></script>
 	<script src="/js/common.js"></script>
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 
 </head>
 
@@ -3100,196 +3097,7 @@
 		<a class="gototop" href="#" onclick="goToGo();"></a>
 	</div>
 
-
-	<script>
-		AOS.init();
-	</script>
-
-	<!-- 강사진 검색-->
-	<script type="text/javascript">
-		function filter() {
-			const input = document.getElementById("value");
-			const filterText = input.value.toLowerCase().trim(); // 입력값을 소문자로 변환하고 공백 제거
-			const kindWraps = document.querySelectorAll(".prof-kind-wrap"); // 모든 .prof-kind-wrap 요소
-
-			kindWraps.forEach((kindWrap) => {
-				const listItems = kindWrap.querySelectorAll(".kind li"); // .kind li 요소들
-				const kindTitle = kindWrap.querySelector(".kind-ti"); // .kind-ti 요소
-
-				let hasVisibleItems = false;
-
-				listItems.forEach((item) => {
-					const name = item.querySelector(".nm").textContent.toLowerCase(); // 강사 이름
-					const team = item.querySelector(".team").textContent.toLowerCase(); // 팀 정보
-					const modalTeam = item.querySelector(".md-team-txt")?.textContent.toLowerCase() || ""; // md-team-txt
-					const modalItem = item.querySelector(".md-item-txt")?.textContent.toLowerCase() || ""; // md-item-txt
-
-					// 검색어가 이름, 팀 정보, md-team-txt, md-item-txt에 포함되어 있으면 표시, 그렇지 않으면 숨김
-					if (
-						name.includes(filterText) ||
-						team.includes(filterText) ||
-						modalTeam.includes(filterText) ||
-						modalItem.includes(filterText)
-					) {
-						item.style.display = ""; // 표시
-						hasVisibleItems = true; // 하나라도 표시되면 true
-					} else {
-						item.style.display = "none"; // 숨김
-					}
-				});
-
-				// .kind-ti 표시 여부 결정
-				if (kindTitle) {
-					kindTitle.style.display = hasVisibleItems ? "" : "none"; // 검색 결과가 없으면 숨김
-				}
-			});
-
-			// 검색 결과가 없는 경우 처리
-			const noResultMessage = document.getElementById("no-result-message");
-			const allVisibleItems = Array.from(document.querySelectorAll(".kind li")).filter(
-				(item) => item.style.display !== "none"
-			);
-
-			if (allVisibleItems.length === 0) {
-				if (!noResultMessage) {
-					const message = document.createElement("p");
-					message.id = "no-result-message";
-					message.innerHTML = "검색 결과가 없습니다.<br><span>다른 검색어를 시도해보세요</span>";
-					message.style.textAlign = "center";
-					document.querySelector(".prof-wrap").appendChild(message);
-				}
-			} else {
-				if (noResultMessage) {
-					noResultMessage.remove();
-				}
-			}
-		}
-	</script>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			// 모든 .more 버튼에 클릭 이벤트 추가
-			const moreButtons = document.querySelectorAll(".more");
-
-			moreButtons.forEach((button) => {
-				button.addEventListener("click", () => {
-					// 현재 버튼의 부모 <li>에서 모달과 overlay를 찾음
-					const parentLi = button.closest("li");
-					const modal = parentLi.querySelector(".modal");
-					const overlay = parentLi.querySelector(".modal-overlay");
-
-					// 모달과 overlay 표시
-					modal.style.display = "block";
-					overlay.style.display = "block";
-
-					// 닫기 버튼 및 overlay 클릭 시 모달 닫기
-					const closeModal = () => {
-						modal.style.display = "none";
-						overlay.style.display = "none";
-					};
-
-					const closeModalButton = modal.querySelector(".modal-close");
-					closeModalButton.addEventListener("click", closeModal);
-					overlay.addEventListener("click", closeModal);
-				});
-			});
-		});
-	</script>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			// Sticky element logic
-			const stickyElement = document.querySelector(".comm-sticky");
-			const peopleSection = document.getElementById("people");
-			const stickyOffset = 100;
-
-			window.addEventListener("scroll", () => {
-				const scrollTop = window.scrollY;
-				const peopleRect = peopleSection.getBoundingClientRect();
-				const stickyRect = stickyElement.getBoundingClientRect();
-
-				if (peopleRect.top <= stickyOffset && peopleRect.bottom > stickyRect.height) {
-					stickyElement.style.position = "fixed";
-					stickyElement.style.top = `${stickyOffset}px`;
-					stickyElement.style.width = "100%";
-					stickyElement.style.zIndex = "1000";
-					stickyElement.classList.add("fixed");
-				} else {
-					stickyElement.style.position = "relative";
-					stickyElement.style.top = "unset";
-					stickyElement.style.width = "auto";
-					stickyElement.classList.remove("fixed");
-				}
-			});
-
-			// Change color of clicked link
-			const links = document.querySelectorAll(".s-left a");
-
-			links.forEach(link => {
-				link.addEventListener("click", (e) => {
-					// Remove active class from all links
-					links.forEach(l => l.classList.remove("active"));
-					// Add active class to the clicked link
-					link.classList.add("active");
-				});
-			});
-		});
-	</script>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			const introSection = document.querySelector(".intro-section");
-			const intTxt = document.querySelector(".int-txt");
-			const intAbility = document.querySelector(".int-ability");
-
-			window.addEventListener("scroll", () => {
-				const introSectionTop = introSection.getBoundingClientRect().top;
-				const introSectionHeight = introSection.offsetHeight;
-
-				if (introSectionTop <= 0 && introSectionTop > -introSectionHeight) {
-					introSection.classList.add("scrolled");
-				} else {
-					introSection.classList.remove("scrolled");
-				}
-			});
-		});
-	</script>
-
-
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-			const kinds = document.querySelectorAll('.kind');
-			const modals = document.querySelectorAll('.int-modal');
-			const closeButtons = document.querySelectorAll('.close');
 	
-			// Open modal
-			kinds.forEach(kind => {
-					kind.addEventListener('click', () => {
-							const target = kind.getAttribute('data-modal-target');
-							const modal = document.querySelector(target);
-							if (modal) {
-									modal.style.display = 'block';
-							}
-					});
-			});
-	
-			// Close modal
-			closeButtons.forEach(button => {
-					button.addEventListener('click', () => {
-							button.closest('.int-modal').style.display = 'none';
-					});
-			});
-	
-			// Close modal when clicking outside
-			window.addEventListener('click', (event) => {
-					modals.forEach(modal => {
-							if (event.target === modal) {
-									modal.style.display = 'none';
-							}
-					});
-			});
-	});
-	</script>
 
 </body>
 

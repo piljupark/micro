@@ -456,3 +456,206 @@ function gnbOpen() {
 }
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    // 강사진 검색 필터
+    function filter() {
+        const input = document.getElementById("value");
+        const filterText = input.value.toLowerCase().trim();
+        const kindWraps = document.querySelectorAll(".prof-kind-wrap");
+
+        kindWraps.forEach((kindWrap) => {
+            const listItems = kindWrap.querySelectorAll(".kind li");
+            const kindTitle = kindWrap.querySelector(".kind-ti");
+
+            let hasVisibleItems = false;
+
+            listItems.forEach((item) => {
+                const name = item.querySelector(".nm").textContent.toLowerCase();
+                const team = item.querySelector(".team").textContent.toLowerCase();
+                const modalTeam = item.querySelector(".md-team-txt")?.textContent.toLowerCase() || "";
+                const modalItem = item.querySelector(".md-item-txt")?.textContent.toLowerCase() || "";
+
+                if (
+                    name.includes(filterText) ||
+                    team.includes(filterText) ||
+                    modalTeam.includes(filterText) ||
+                    modalItem.includes(filterText)
+                ) {
+                    item.style.display = "";
+                    hasVisibleItems = true;
+                } else {
+                    item.style.display = "none";
+                }
+            });
+
+            if (kindTitle) {
+                kindTitle.style.display = hasVisibleItems ? "" : "none";
+            }
+        });
+
+        const noResultMessage = document.getElementById("no-result-message");
+        const allVisibleItems = Array.from(document.querySelectorAll(".kind li")).filter(
+            (item) => item.style.display !== "none"
+        );
+
+        if (allVisibleItems.length === 0) {
+            if (!noResultMessage) {
+                const message = document.createElement("p");
+                message.id = "no-result-message";
+                message.innerHTML = "검색 결과가 없습니다.<br><span>다른 검색어를 시도해보세요</span>";
+                message.style.textAlign = "center";
+                document.querySelector(".prof-wrap").appendChild(message);
+            }
+        } else {
+            if (noResultMessage) {
+                noResultMessage.remove();
+            }
+        }
+    }
+
+     // .s-left a 클릭 시 .kind-ti로 이동
+     function initSmoothScroll() {
+        const links = document.querySelectorAll(".s-left a");
+
+        links.forEach(link => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault(); // 기본 동작 방지
+                const targetId = link.getAttribute("href").replace("#", ""); // href에서 ID 추출
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const offset = 160; // 상단에서 120px 떨어지도록 설정
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth" // 부드러운 스크롤
+                    });
+                }
+            });
+        });
+    }
+
+
+    // 모달 열기 및 닫기
+    function initModals() {
+        const moreButtons = document.querySelectorAll(".more");
+        const kinds = document.querySelectorAll(".kind");
+        const modals = document.querySelectorAll(".int-modal, .modal");
+        const closeButtons = document.querySelectorAll(".close");
+
+        // .more 버튼 클릭 시 모달 열기
+        moreButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const parentLi = button.closest("li");
+                const modal = parentLi.querySelector(".modal");
+                const overlay = parentLi.querySelector(".modal-overlay");
+
+                modal.style.display = "block";
+                overlay.style.display = "block";
+
+                const closeModal = () => {
+                    modal.style.display = "none";
+                    overlay.style.display = "none";
+                };
+
+                const closeModalButton = modal.querySelector(".modal-close");
+                closeModalButton.addEventListener("click", closeModal);
+                overlay.addEventListener("click", closeModal);
+            });
+        });
+
+        // .kind 클릭 시 모달 열기
+        kinds.forEach(kind => {
+            kind.addEventListener("click", () => {
+                const target = kind.getAttribute("data-modal-target");
+                const modal = document.querySelector(target);
+                if (modal) {
+                    modal.style.display = "block";
+                }
+            });
+        });
+
+        // 닫기 버튼 클릭 시 모달 닫기
+        closeButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                button.closest(".int-modal, .modal").style.display = "none";
+            });
+        });
+
+        // 모달 외부 클릭 시 닫기
+        window.addEventListener("click", (event) => {
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+    }
+
+    // Sticky 요소 처리
+    function initStickyElement() {
+        const stickyElement = document.querySelector(".comm-sticky");
+        const peopleSection = document.getElementById("people");
+        const stickyOffset = 100;
+
+        window.addEventListener("scroll", () => {
+            const peopleRect = peopleSection.getBoundingClientRect();
+            const stickyRect = stickyElement.getBoundingClientRect();
+
+            if (peopleRect.top <= stickyOffset && peopleRect.bottom > stickyRect.height) {
+                stickyElement.style.position = "fixed";
+                stickyElement.style.top = `${stickyOffset}px`;
+                stickyElement.style.width = "100%";
+                stickyElement.style.zIndex = "1000";
+                stickyElement.classList.add("fixed");
+            } else {
+                stickyElement.style.position = "relative";
+                stickyElement.style.top = "unset";
+                stickyElement.style.width = "auto";
+                stickyElement.classList.remove("fixed");
+            }
+        });
+    }
+
+    // 클릭한 링크 색상 변경
+    function initLinkHighlight() {
+        const links = document.querySelectorAll(".s-left a");
+
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+    }
+
+    // 스크롤 시 intro-section 처리
+    function initIntroSectionScroll() {
+        const introSection = document.querySelector(".intro-section");
+
+        window.addEventListener("scroll", () => {
+            const introSectionTop = introSection.getBoundingClientRect().top;
+            const introSectionHeight = introSection.offsetHeight;
+
+            if (introSectionTop <= 0 && introSectionTop > -introSectionHeight) {
+                introSection.classList.add("scrolled");
+            } else {
+                introSection.classList.remove("scrolled");
+            }
+        });
+    }
+
+    // 초기화 함수 호출
+    initModals();
+    initStickyElement();
+    initLinkHighlight();
+    initIntroSectionScroll();
+    initSmoothScroll(); // 새로 추가된 스크롤 초기화 함수 호출
+
+    // 검색 필터는 외부에서 호출 가능하도록 전역으로 설정
+    window.filter = filter;
+});
+
+
