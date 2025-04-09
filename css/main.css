@@ -186,7 +186,7 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 /* 특화역량 모달  */
 .intro-section .int-cont #intModal3.int-modal .int-mod-ti {color: #994FE6;}
 .intro-section .int-cont #intModal3.int-modal .mod-grid li:nth-child(odd) {border-bottom: 1px solid rgba(153, 79, 230, 0.5); color: #994FE6;}
-.intro-section .int-cont #intModal3.int-modal .mod-grid li:nth-child(even) {border-bottom: 1px solid rgba(153, 79, 230, 0.5); color: #994FE6;}
+.intro-section .int-cont #intModal3.int-modal .mod-grid li:nth-child(even) {border-bottom: 1px solid rgba(153, 79, 230, 0.5); }
 .intro-section .int-cont #intModal3.int-modal .mod-grid li:nth-child(n+1):nth-child(-n+2) {border-top: 2px solid rgba(153, 79, 230, 0.5); border-bottom: 2px solid rgba(153, 79, 230, 0.5); background: rgba(22, 84, 120, 0.05);  color: #994FE6; }
 
 /* 전문역량 모달  */
@@ -501,7 +501,7 @@ header { height: auto; padding: 11px 0; border-bottom: none; }
 
 
 /* 역량 모달 */
-.intro-section .int-cont .int-modal .modal-content {min-width: 300px; height: auto; max-height: 80vh; padding: 16px 20px 20px; overflow-y: scroll;}
+.intro-section .int-cont .int-modal .modal-content { width: calc(100% - 40px); min-width: 300px; height: auto; max-height: 80vh; padding: 16px 20px 20px; overflow-y: scroll;}
 .intro-section .int-cont .int-modal .modal-content .close {font-size: 24px; top: 16px; right: 20px; z-index: 2;}
 .intro-section .int-cont .int-modal .modal-content .int-mod-ti {font-size: 20px; margin-top: 18px; }
 .intro-section .int-cont .int-modal .modal-content .int-mod-cont {margin-top: 13px; }
