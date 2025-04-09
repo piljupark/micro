@@ -516,22 +516,25 @@ document.addEventListener("DOMContentLoaded", () => {
      // .s-left a 클릭 시 .kind-ti로 이동
      function initSmoothScroll() {
         const links = document.querySelectorAll(".s-left a");
-
+    
         links.forEach(link => {
             link.addEventListener("click", (event) => {
                 event.preventDefault(); // 기본 동작 방지
                 const targetId = link.getAttribute("href").replace("#", ""); // href에서 ID 추출
                 const targetElement = document.getElementById(targetId);
-
+    
                 if (targetElement) {
-                    const offset = 160; // 상단에서 120px 떨어지도록 설정
+                    const offset = 160; // 상단에서 160px 떨어지도록 설정
                     const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
                     const offsetPosition = elementPosition - offset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth" // 부드러운 스크롤
-                    });
+    
+                    // GSAP ScrollToPlugin 사용
+                    if (typeof gsap !== "undefined" && gsap.to) {
+                        gsap.to(window, { scrollTo: offsetPosition, duration: 0 }); // 애니메이션 없이 바로 이동
+                    } else {
+                        // GSAP이 없을 경우 기본 스크롤 동작
+                        window.scrollTo(0, offsetPosition);
+                    }
                 }
             });
         });
