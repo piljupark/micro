@@ -24,9 +24,9 @@
 
         var mainPosition = $('#mainSec').offset().top;
         var programPosition = $('#program').offset().top - 300;  // 120px 간격 추가
-        var peoplePosition = $('#people').offset().top - 300;
         var bannerBgPosition = $('#bannerBgSec').offset().top - 300;
         var referencePosition = $('#reference').offset().top - 300;
+        var peoplePosition = $('#people').offset().top - 290;
 
         
 
@@ -37,29 +37,29 @@
             $(".menu-item a[href='#mainSec']").parent().addClass('on');
         }
         // 📌 #program 활성화
-        else if (scrollPosition >= programPosition && scrollPosition < peoplePosition) {
+        else if (scrollPosition >= programPosition && scrollPosition < referencePosition) {
             $(".menu-item a[href='#program']").parent().addClass('on');
         }
-        // 📌 #people 활성화
-        else if (scrollPosition >= peoplePosition && scrollPosition < referencePosition) {
-            $(".menu-item a[href='#people']").parent().addClass('on');
-        }
         // 📌 #reference 활성화
-        else if (scrollPosition >= referencePosition) {
+        else if (scrollPosition >= referencePosition && scrollPosition < peoplePosition ) {
             $(".menu-item a[href='#reference']").parent().addClass('on');
         }
+         // 📌 #people 활성화
+         else if (scrollPosition >= peoplePosition ) {
+            $(".menu-item a[href='#people']").parent().addClass('on');
+        }
 
-        // 📌 맨 아래 도달 시 #reference 유지
+        // 📌 맨 아래 도달 시 #people 유지
         if (scrollPosition + windowHeight >= documentHeight - 10) {
             $(".menu-item").removeClass("on");
-            $(".menu-item a[href='#reference']").parent().addClass("on");
+            $(".menu-item a[href='#people']").parent().addClass("on");
         }
 
         // 📌 #reference 애니메이션 적용
         if (scrollPosition + 1400 > bannerBgPosition) {
-            $("#reference").addClass('animated');
+            $("#people").addClass('animated');
         } else {
-            $("#reference").removeClass('animated');
+            $("#people").removeClass('animated');
         }
 
         //Quick Menu
@@ -601,23 +601,34 @@ document.addEventListener("DOMContentLoaded", () => {
     function initStickyElement() {
         const stickyElement = document.querySelector(".comm-sticky");
         const peopleSection = document.getElementById("people");
+        const profWrap = document.querySelector("#people .prof-wrap");
         const stickyOffset = 100;
-
+    
         window.addEventListener("scroll", () => {
             const peopleRect = peopleSection.getBoundingClientRect();
             const stickyRect = stickyElement.getBoundingClientRect();
-
+    
             if (peopleRect.top <= stickyOffset && peopleRect.bottom > stickyRect.height) {
                 stickyElement.style.position = "fixed";
                 stickyElement.style.top = `${stickyOffset}px`;
                 stickyElement.style.width = "100%";
                 stickyElement.style.zIndex = "1000";
                 stickyElement.classList.add("fixed");
+    
+                // .fixed가 추가되면 #people .prof-wrap에 margin-top: 60px 추가
+                if (profWrap) {
+                    profWrap.style.marginTop = "60px";
+                }
             } else {
                 stickyElement.style.position = "relative";
                 stickyElement.style.top = "unset";
                 stickyElement.style.width = "auto";
                 stickyElement.classList.remove("fixed");
+    
+                // .fixed가 제거되면 #people .prof-wrap의 margin-top 제거
+                if (profWrap) {
+                    profWrap.style.marginTop = "";
+                }
             }
         });
     }
