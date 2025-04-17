@@ -11,76 +11,55 @@
         var scrollPosition = $(window).scrollTop();
         var windowHeight = $(window).height();
         var documentHeight = $(document).height();
-        // var mainPosition = $('#mainSec').offset().top;
-        // var mainHeight = $('#mainSec').innerHeight();
-        // var bannerPosition = $('#bannerSec').offset().top;
-        // var bannerHeight = $('#bannerSec').innerHeight();
-        // var programPosition = $('#program').offset().top - 200;
-        // var programHeight = $('#program').innerHeight();
-        // var peoplePosition = $('#people').offset().top - 200;
-        // var bannerBgPosition = $('#bannerBgSec').offset().top;
-        // var contactPosition = $('#reference').offset().top - 200;
-        // var contactHeight = $('#reference').innerHeight();
 
-        var mainPosition = $('#mainSec').offset().top;
-        var programPosition = $('#program').offset().top - 300;  // 120px 간격 추가
-        var bannerBgPosition = $('#bannerBgSec').offset().top - 300;
-        var referencePosition = $('#reference').offset().top - 300;
-        var peoplePosition = $('#people').offset().top - 290;
+        // 위치 계산 (존재 여부 체크)
+        var mainPosition = $('#mainSec').length ? $('#mainSec').offset().top : 0;
+        var programPosition = $('#program').length ? $('#program').offset().top - 300 : 0;
+        var bannerBgPosition = $('#bannerBgSec').length ? $('#bannerBgSec').offset().top - 300 : 0;
+        var referencePosition = $('#reference').length ? $('#reference').offset().top - 300 : 0;
+        var peoplePosition = $('#people').length ? $('#people').offset().top - 290 : 0;
 
         
 
-        $('.menu-item').removeClass('on');  // 모든 메뉴의 .on 제거
-        
-        // 📌 #program 전까지는 #mainSec이 활성화
+        $('.menu-item').removeClass('on');
+
         if (scrollPosition < programPosition) {
             $(".menu-item a[href='#mainSec']").parent().addClass('on');
-        }
-        // 📌 #program 활성화
-        else if (scrollPosition >= programPosition && scrollPosition < referencePosition) {
+        } else if (scrollPosition >= programPosition && scrollPosition < referencePosition) {
             $(".menu-item a[href='#program']").parent().addClass('on');
-        }
-        // 📌 #reference 활성화
-        else if (scrollPosition >= referencePosition && scrollPosition < peoplePosition ) {
+        } else if (scrollPosition >= referencePosition && scrollPosition < peoplePosition) {
             $(".menu-item a[href='#reference']").parent().addClass('on');
-        }
-         // 📌 #people 활성화
-         else if (scrollPosition >= peoplePosition ) {
+        } else if (scrollPosition >= peoplePosition) {
             $(".menu-item a[href='#people']").parent().addClass('on');
         }
 
-        // 📌 맨 아래 도달 시 #people 유지
         if (scrollPosition + windowHeight >= documentHeight - 10) {
             $(".menu-item").removeClass("on");
             $(".menu-item a[href='#people']").parent().addClass("on");
         }
 
-        // 📌 #reference 애니메이션 적용
-        if (scrollPosition + 1400 > bannerBgPosition) {
-            $("#people").addClass('animated');
-        } else {
-            $("#people").removeClass('animated');
-        }
+        // QuickMenu 위치 처리 (footer 기준)
+        if ($('footer').length && $('#quickMenu').length) {
+            var footerTop = $('footer').offset().top;
+            var quickMenu = $('#quickMenu');
+            var scrollBottom = scrollPosition + windowHeight;
 
-        //Quick Menu
-        var footerTop = $('footer').offset().top;
-        var quickMenu = $('#quickMenu');
-        var scrollBottom = $(window).scrollTop() + $(window).height(); // 브라우저의 하단 위치
+            if (scrollBottom > footerTop - 20) {
+                quickMenu.css('bottom', scrollBottom - footerTop + 20);
+            } else {
+                quickMenu.css('bottom', '20px');
+            }
 
-        if (scrollBottom > footerTop - 20) {
-            // footer에 도달했을 때
-            quickMenu.css('bottom', scrollBottom - footerTop + 20);
-        } else {
-            // footer에 도달하지 않았을 때
-            quickMenu.css('bottom', '20px');
-        }
-
-        if(scrollPosition > 100){
-            $("#quickMenu").addClass('on');
-        }else{
-            $("#quickMenu").removeClass('on');
+            if (scrollPosition > 100) {
+                quickMenu.addClass('on');
+            } else {
+                quickMenu.removeClass('on');
+            }
         }
     }); //End of the $(window).scroll
+    $(window).on("load", function () {
+        $(window).scroll();
+    });
 })(); //End of the 즉시실행함수 (function() {}
 
 
@@ -525,29 +504,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-     // .s-left a 클릭 시 .kind-ti로 이동
-     function initSmoothScroll() {
+    // .s-left a 클릭 시 .kind-ti로 이동
+    function initSmoothScroll() {
         const links = document.querySelectorAll(".s-left a");
     
         links.forEach(link => {
             link.addEventListener("click", (event) => {
-                event.preventDefault(); // 기본 동작 방지
-                const targetId = link.getAttribute("href").replace("#", ""); // href에서 ID 추출
-                const targetElement = document.getElementById(targetId);
+                event.preventDefault();
     
-                if (targetElement) {
-                    const offset = 160; // 상단에서 160px 떨어지도록 설정
-                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                    const offsetPosition = elementPosition - offset;
+                const targetId = link.getAttribute("href").replace("#", "");
     
-                    // GSAP ScrollToPlugin 사용
-                    if (typeof gsap !== "undefined" && gsap.to) {
-                        gsap.to(window, { scrollTo: offsetPosition, duration: 0 }); // 애니메이션 없이 바로 이동
-                    } else {
-                        // GSAP이 없을 경우 기본 스크롤 동작
-                        window.scrollTo(0, offsetPosition);
+                // 1) 타겟 요소를 polling 방식으로 기다림
+                const waitForElement = setInterval(() => {
+                    const targetElement = document.getElementById(targetId);
+    
+                    if (targetElement) {
+                        clearInterval(waitForElement); // 대기 종료
+    
+                        const offset = 160;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                        const offsetPosition = elementPosition - offset;
+    
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }
-                }
+                }, 50); // 50ms마다 체크 (빠르게 반응)
             });
         });
     }
