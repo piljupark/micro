@@ -91,7 +91,7 @@ $(document).ready(function() {
     var isTablet = window.innerWidth <= 1024;
 
     // Swiper :: .main-swiper
-    var listArray = ["HRD 컨설팅 서비스", "기업 교육 솔루션", "트렌드M"];
+    var listArray = ["VISTA 역량 스쿨","HRD 컨설팅 서비스", "기업 교육 솔루션", "트렌드M"];
     var mainSwiper = new Swiper('.main-swiper', {
         effect: 'fade',
         autoplay: { // 자동 재생
@@ -117,14 +117,14 @@ $(document).ready(function() {
     });
 
     //Swiper :: .banner-swiper
-    var bannerSwiper = new Swiper('.banner-swiper', {
-        loop: true, // 무한 슬라이드
-        pagination: { 
-            el: '.banner-swiper .swiper-pagination',
-            clickable: true,
-            type: 'bullets',
-        },
-    });
+    // var bannerSwiper = new Swiper('.banner-swiper', {
+    //     loop: true, // 무한 슬라이드
+    //     pagination: { 
+    //         el: '.banner-swiper .swiper-pagination',
+    //         clickable: true,
+    //         type: 'bullets',
+    //     },
+    // });
 
     //Swiper :: .conference-swiper
     var conferenceSwiper = new Swiper('.conference-swiper', {
@@ -154,26 +154,36 @@ $(document).ready(function() {
         breakpoints: {
             1280: { // 브라우저 >= 1280
               slidesPerView: 4,  
-              spaceBetween: 26.7   
+              spaceBetween: 26.7
             },
             
         },
     });
 
      //Swiper :: .spc-swiper
-     var regularSwiper = new Swiper('.spc-swiper', {
+     var spcSwiper = new Swiper('.spc-swiper', {
         slidesPerView: 2,
-        spaceBetween: 14, //슬라이드 사이 간격
+        spaceBetween: 14,
+        slidesPerGroup: 2, // 기본: 2장씩 넘어감
         navigation: {
             nextEl: '.spc-swiper .navi-wrap .swiper-button-next',
             prevEl: '.spc-swiper .navi-wrap .swiper-button-prev',
         },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         breakpoints: {
-            1280: { // 브라우저 >= 1280
-              slidesPerView: 4,  
-              spaceBetween: 26.7   
+            1280: {
+                slidesPerView: 4,
+                spaceBetween: 26.7,
+                slidesPerGroup: 4, // 1280 이상: 4장씩 넘어감
             },
-            
+            0: {
+                slidesPerView: 2,
+                spaceBetween: 14,
+                slidesPerGroup: 2, // 1280 미만: 2장씩 넘어감
+            },
         },
     });
 
@@ -228,9 +238,11 @@ $(document).ready(function() {
 
 //메인슬라이드 링크 연결
 function goDtlPg(index){
-    var url_Main = index == 1 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=32&cateNm=srvCnstEdu' :
-    				index == 2 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=35&cateNm=srvEduCmp' :
-                    index == 3 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=10&cateNm=spcTrendM' :
+    var url_Main = index == 1 ? 'https://kma.or.kr/usrs/eduRegMgnt/eduRegInfoDetailForm.do?p_usrid=&p_bbs_id=&p_pst_id=&p_edutype_cd=003&p_crscd=110879&p_crsseq_id=&p_month=&p_return=MENU&CRSCD=110879&CRSSEQ_ID=&p_hmpgcd=30&p_device=P&mkey=36373' :
+                    index == 2 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=32&cateNm=srvCnstEdu' :
+    				index == 3 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=35&cateNm=srvEduCmp' :
+                    index == 4 ? 'https://www.kma.or.kr/kr/usrs/eduRegMgnt/eduRegMgntForm.do?mkey=10&cateNm=spcTrendM' :
+                    
                     "";
     if(url_Main){
         window.open(url_Main, "_blank");
