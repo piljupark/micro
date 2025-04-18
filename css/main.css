@@ -138,6 +138,7 @@ header.fixed { background: #000; border-bottom: 1px solid #000; }
 .cont-section .round-al-wrap img.round-bg-cap3 { width: 65vw; max-width: 850px; min-width: 335px; } 
 
 .cont-section .round-al-wrap .round-al { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 16vw; height: 16vw; max-width: 250px; max-height: 250px; min-width: 100px; min-height: 100px; background: #fff; border-radius: 100%; display: flex; justify-content: center; align-items: center; text-align: center; font-size: clamp(14px, 2vw, 26px); font-weight: 600; line-height: clamp(20px, 3vw, 37px); letter-spacing: -1.68px; box-shadow: 0px 3px 100px 0px rgba(0, 0, 0, 0.15); } 
+.cont-section .round-al-wrap .round-al img {width: 80%;}
 
 
 /* ****************** 인트로 ****************** */
